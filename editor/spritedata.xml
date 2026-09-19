@@ -1,6 +1,45 @@
 <?xml version="1.0"?>
 <sprites>
-	<sprite string_id="examplemod:demo" name="Demo Actor">
-        <!-- Settings go here -->
+	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
+		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
+		<value nybble="5-6" title="Starting node" category="behavior" />
+		<value nybble="7" title="Path ID" id_type="path" category="movement" />
+		<checkbox nybble="8" title="Smooth movement" mask="4" comment="This nybble is separate from the &quot;Move strictly&quot; nybble and uses a different algorithm." category="behavior" />
+		<checkbox nybble="8" title="Move strictly" mask="8" comment="Used to determine how the path should be followed. Elaboration can be found in this sprite's notes." category="behavior" />
+		<list bit="31-32" title="When the last node is reached" category="behavior">
+            <entry value="0">Stop</entry>
+            <entry value="1">Go to loop start</entry>
+            <entry value="2">Fall down</entry>
+            <entry value="3">Stop with rumble</entry>
+		</list>
+		<value nybble="9-10" title="Loop starting node" category="behavior" requirednybble="8.3" requiredval="1"/>
+		<checkbox nybble="12" title="Event activated" mask="8" category="behavior" />
+		<list nybble="13" title="Sine effect type" category="behavior">
+			<entry value="0">Vertical</entry>
+			<entry value="1">Horizontal</entry>
+		</list>
+		<list nybble="14" title="Initial sine angle" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90°</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180°</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270°</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<value nybble="15" title="Sine effect strength" category="behavior" />
+		<value nybble="16" title="Sine effect speed" category="behavior" />
+		<checkbox nybble="20" title="Reset when off-screen" comment="When the path controller is off-screen, it resets itself to its original position and waits for the triggering event id to be activated, regardless of the &quot;Event activated&quot; checkbox." category="behavior" />
+		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
+		<value nybble="24" title="Unknown Value 24" />
 	</sprite>
 </sprites>

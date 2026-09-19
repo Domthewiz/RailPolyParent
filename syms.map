@@ -1,3 +1,7 @@
 @addresses_from "00050000-10101D00" // US v1.3.0 (v64)
 
-// If your mod uses symbols that aren't in RedCore, you can add them here.
+// RailPolyParentBase
+    _ZN18RailPolyParentBaseC2ERK16ActorCreateParam = 0x0286BE94;
+    _ZN18RailPolyParentBase6createEv = 0x0286C11C;
+    _ZN18RailPolyParentBase7executeEv = 0x0286C268;
+    _ZN18RailPolyParentBase9sTypeInfoE = 0x101EA840;

@@ -2,7 +2,8 @@
 
 #include <red/registry/Registrar.h>
 
-namespace example {
+// kind of bad name frfr twine
+namespace RailPolyParent {
     
     red::Registrar* getRegistrar();
     
