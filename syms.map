@@ -5,3 +5,9 @@
     _ZN18RailPolyParentBase6createEv = 0x0286C11C;
     _ZN18RailPolyParentBase7executeEv = 0x0286C268;
     _ZN18RailPolyParentBase9sTypeInfoE = 0x101EA840;
+
+// CenterRotationParentBase
+    _ZN24CenterRotationParentBaseC2ERK16ActorCreateParam = 0x02722BF0;
+    _ZN24CenterRotationParentBase6createEv = 0x02722D54;
+    _ZN24CenterRotationParentBase7executeEv = 0x02722E30;
+    _ZN24CenterRotationParentBase9sTypeInfoE = 0x101EB294;

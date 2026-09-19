@@ -20,7 +20,11 @@ ActorBase::Result OdoriParent::create() {
 }
 
 bool OdoriParent::execute() {
-    return RailPolyParentBase::execute();
+    if (!RailPolyParentBase::execute()) {
+        return false;
+    }
+    // mPos.x += 1.0f;
+    return true;
 }
 
 }

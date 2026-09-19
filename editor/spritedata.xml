@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sprites>
-	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
+	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing [UNFINISHED]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="5-6" title="Starting node" category="behavior" />
 		<value nybble="7" title="Path ID" id_type="path" category="movement" />
@@ -41,5 +41,135 @@
 		<checkbox nybble="20" title="Reset when off-screen" comment="When the path controller is off-screen, it resets itself to its original position and waits for the triggering event id to be activated, regardless of the &quot;Event activated&quot; checkbox." category="behavior" />
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
 		<value nybble="24" title="Unknown Value 24" />
+	</sprite>
+	<sprite string_id="railpolyp:daenparent" name="Movement Controller - Pivotal Rotation (Shifting)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
+		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
+		<list nybble="5" title="Starting Rotation" comment="The angle it starts rotating at in degrees. Used to desync other sprites." category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<list nybble="6" title="Swing Arc" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<list nybble="8" title="Event Mode" comment="This changes how events interact with this controller." category="behavior">
+			<entry value="0">Event Triggered - Rotates Back When Deactivated (Fastest)</entry>
+			<entry value="1">Already Spinning - Event Reverses Direction</entry>
+			<entry value="2">Continuous Spinning While Event Active</entry>
+			<entry value="4">Event Triggered - Rotates Back When Deactivated (Slow)</entry>
+			<entry value="8">Event Triggered - Rotates Back When Deactivated (Slowest)</entry>
+		</list>
+		<dualbox bit="36" title1="Spins Counter-Clockwise" title2="Spins Clockwise" category="behavior" />
+		<list nybble="10" title="Effect" category="behavior">
+			<entry value="0">No Effect</entry>
+			<entry value="1">POW-Block-Sound</entry>
+			<entry value="2">Coin-Sound</entry>
+			<entry value="3">Coin-Sound (2x) + POW-Block-Sound</entry>
+			<entry value="4">Zoom alteration</entry>
+			<entry value="5">Zoom alteration</entry>
+			<entry value="6">Zoom alteration</entry>
+			<entry value="7">Zoom alteration</entry>
+			<entry value="8">Zoom alteration</entry>
+			<entry value="9">Zoom alteration</entry>
+			<entry value="10">Zoom alteration</entry>
+			<entry value="11">Zoom alteration</entry>
+			<entry value="12">Zoom alteration</entry>
+		</list>
+		<list nybble="16" title="Spinning Speed" comment="The spinning speed." category="behavior">
+			<entry value="4">Very Slow</entry>
+			<entry value="7">Slow</entry>
+			<entry value="0">Slow - Medium</entry>
+			<entry value="1">Medium</entry>
+			<entry value="2">Medium - Fast</entry>
+			<entry value="3">Fast</entry>
+			<entry value="5">Faster</entry>
+			<entry value="6">Very Fast</entry>
+		</list>
+		<value nybble="18" title="Unknown Value 18" comment="I saw no real change." />
+		<value nybble="20" title="Unknown Value 20" comment="Sprite 390 is on steroids with this option used." />
+		<value nybble="21-22" title="Movement ID" comment="Use this to assign coins and other objects to this sprite." id_type="movement" category="movement" />
+		<value nybble="24" title="Useless Value 24" comment="Only used as 1 and 0." />
+		<list nybble="23" title="Shifting position offset">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<layer title="X Offset amount" category="behavior" type="list">
+			<entry value="8">-8</entry>
+			<entry value="9">-7</entry>
+			<entry value="10">-6</entry>
+			<entry value="11">-5</entry>
+			<entry value="12">-4</entry>
+			<entry value="13">-3</entry>
+			<entry value="14">-2</entry>
+			<entry value="15">-1</entry>
+			<entry value="0">0</entry>
+			<entry value="1">+1</entry>
+			<entry value="2">+2</entry>
+			<entry value="3">+3</entry>
+			<entry value="4">+4</entry>
+			<entry value="5">+5</entry>
+			<entry value="6">+6</entry>
+			<entry value="7">+7</entry>
+		</layer>
+		<initialstate title="Y Offset amount" mask="4" category="behavior" type="list">
+			<entry value="8">-8</entry>
+			<entry value="9">-7</entry>
+			<entry value="10">-6</entry>
+			<entry value="11">-5</entry>
+			<entry value="12">-4</entry>
+			<entry value="13">-3</entry>
+			<entry value="14">-2</entry>
+			<entry value="15">-1</entry>
+			<entry value="0">0</entry>
+			<entry value="1">+1</entry>
+			<entry value="2">+2</entry>
+			<entry value="3">+3</entry>
+			<entry value="4">+4</entry>
+			<entry value="5">+5</entry>
+			<entry value="6">+6</entry>
+			<entry value="7">+7</entry>
+		</initialstate>
 	</sprite>
 </sprites>

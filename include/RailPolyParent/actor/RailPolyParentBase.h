@@ -29,4 +29,4 @@ protected:
     Angle           _184c;
     u8              _1850[16];
 };
-static_assert(sizeof(RailPolyParentBase) == 0x1860, "RailPolyParent size mismatch");
+static_assert(sizeof(RailPolyParentBase) == 0x1860, "RailPolyParentBase size mismatch");

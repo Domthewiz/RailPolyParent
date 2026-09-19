@@ -4,19 +4,18 @@
 
 namespace RailPolyParent {
     
-    class OdoriParent : public RailPolyParentBase {
-        public:
+class OdoriParent : public RailPolyParentBase {
+    public:
         static Profile* sProfile;
-        
-        public:
+    
+    public:
         OdoriParent(const ActorCreateParam& param);
         ~OdoriParent() override = default;
-        
+    
         Result create() override;
         bool execute() override;
-        // bool draw() override;
-        
-        private:
-        // AnimModel* mModel;
-    };
+    
+    private:
+};
+
 }
