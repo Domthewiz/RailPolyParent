@@ -43,3 +43,12 @@
     _ZN17PairObjParentBase6createEv = 0x02847D18;
     _ZN17PairObjParentBase7executeEv = 0x02847E40;
     _ZN17PairObjParentBase9sTypeInfoE = 0x101EB624;
+
+// LineMgr
+    _ZN7LineMgrC1Ev = 0x0200DC14;
+    _ZN7LineMgr4initERKN4sead7Vector2IfEEhfNS_4TypeEh = 0x0200DF60;
+    _ZN7LineMgr13startLineMoveEb = 0x0200E178;
+    _ZN7LineMgr12setBaseSpeedEf = 0x0200E0C0;
+    _ZN7LineMgr12StateID_SideE = 0x101ECAEC;
+    _Z13getLineUnitNoP7LineMgrff = 0x0200e0fc;
+    _Z10change_dirP7LineMgr = 0x0200df44;

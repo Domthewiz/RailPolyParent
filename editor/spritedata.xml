@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sprites>
-	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing [UNFINISHED]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
+	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing [UNFINISHED] [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="5-6" title="Starting node" category="behavior" />
 		<value nybble="7" title="Path ID" id_type="path" category="movement" />
@@ -615,6 +615,23 @@
 		</layer>
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
+	</sprite>
+	<sprite string_id="railpolyp:linefp" name="Movement Controller - Line Follower [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite.">
+		<dualbox nybble="12" title1="Goes Left" title2="Goes Right"/>
+		<dualbox nybble="12" title1="Reverse at end" title2="Stop at end"/>
+        <list nybble="11" title="Speed">
+			<entry value="0">1.0</entry>
+			<entry value="1">0.5</entry>
+			<entry value="2">1.5</entry>
+			<entry value="3">2.0</entry>
+			<entry value="4">2.5</entry>
+			<entry value="5">3.0</entry>
+			<entry value="6">3.5</entry>
+			<entry value="7">4.0</entry>
+			<entry value="8">4.5</entry>
+			<entry value="9">5.0</entry>
+		</list>
+		<value nybble="21-22" title="Movement ID" comment="For all intense in purposes, this is a path id. Use this to link this controller with the objects you want to path control." id_type="movement" category="movement" />
 	</sprite>
 	<!-- <sprite string_id="railpolyp:boltmp" name="Movement Controller - Bolt (Universally-controlled) [NON-FUNCTIONAL]">
 		<list nybble="10" title="Style" comment="The design of the bolt." category="behavior">

@@ -1,5 +1,6 @@
 #include "RailPolyParent/actor/CenterSwingMovementParent.h"
 #include "RailPolyParent/actor/DaenSwingParent.h"
+#include "RailPolyParent/actor/LineFollowerParent.h"
 #include "actor/ActorPtrCache.h"
 #include <RailPolyParent/actor/CenterSwingParentBase.h>
 #include <RailPolyParent/actor/CenterRotationParentBase.h>
@@ -10,7 +11,7 @@
 
 #include <telkin/Telkin.h>
 
-#include <map_obj/ParentMovementMgr.h>
+#include <../REDCORE2.0HEADERS/ParentMovementMgr.h>
 #include <actor/ActorMgr.h>
 #include <RailPolyParent/actor/CenterMovementParent.h>
 #include <RailPolyParent/actor/DaenParent.h>
@@ -45,7 +46,7 @@ RailPolyParentBase* ParentMovementMgr_fetchPath(ParentMovementMgr* _this) {
         }
         
         // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile) {
+        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile || targetactor->getProfile() == RailPolyParent::LineFollowerParent::sProfile) {
             return targetactor;
         }
         
@@ -96,7 +97,7 @@ RailPolyParentBase* PathControlledActor_getController(u32 movement_id) {
         }
         
         // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile) {
+        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile || targetactor->getProfile() == RailPolyParent::LineFollowerParent::sProfile) {
             return targetactor;
         }
         

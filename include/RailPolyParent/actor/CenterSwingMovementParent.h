@@ -1,6 +1,6 @@
 
 #pragma once
-#include "map_obj/ParentMovementMgr.h"
+#include <../REDCORE2.0HEADERS/ParentMovementMgr.h>
 #include <RailPolyParent/actor/CenterSwingParentBase.h>
 
 namespace RailPolyParent {

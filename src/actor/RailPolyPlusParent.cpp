@@ -6,7 +6,7 @@
 #include <RailPolyParent/RailPolyParent.h>
 #include <RailPolyParent/actor/RailPolyPlusParent.h>
 #include <telkin/Print.h>
-#include <map/SwitchFlagMgr.h>
+#include <../REDCORE2.0HEADERS/SwitchFlagMgr.h> // TODO!: Fix once redcore 2.0.0 releases
 
 namespace RailPolyParent {
 
