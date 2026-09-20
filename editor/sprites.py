@@ -144,7 +144,7 @@ class SpriteImage_ControllerSpinning_Universal(SLib.SpriteImage_MovementControll
         if speedValue > 7:
             speedValue -= 8
 
-        self.rotationSpeed = (SpriteImage_ControllerSpinning_Shifting.Speeds[speedValue] / 0x100000000) * 360
+        self.rotationSpeed = (SpriteImage_ControllerSpinning_Universal.Speeds[speedValue] / 0x100000000) * 360
 
         if reversedDir:
             self.rotation = -self.rotation
@@ -243,11 +243,28 @@ class SpriteImage_ControllerPath_Plus(SLib.SpriteImage_StaticMultiple):
     def loadImages():
         SLib.loadIfNotInImageCache('ControllerPath_Plus', 'controller_path_plus.png')
 
+class SpriteImage_ControllerPath_TwoWay_Universal(SLib.SpriteImage_StaticMultiple):  # 70, 642
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            3.75,
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('TwoWayU0', 'controller_twoway_hor_universal.png')
+        SLib.loadIfNotInImageCache('TwoWayU1', 'controller_twoway_ver_universal.png')
+
+    def dataChanged(self):
+        self.image = ImageCache['TwoWayU%d' % ((self.parent.spritedata[3] & 3) // 2)]
+        super().dataChanged()
+
 ImageClasses = {
     "railpolyp:odoriparent": SpriteImage_ControllerDancing,
     "railpolyp:swaydaenparent": SpriteImage_ControllerSwaying_Shifting,
     "railpolyp:daenparent": SpriteImage_ControllerSpinning_Shifting,
     "railpolyp:swaycentermp": SpriteImage_ControllerSwaying_Universal,
     "railpolyp:centermp": SpriteImage_ControllerSpinning_Universal,
+    "railpolyp:pairobjmp": SpriteImage_ControllerPath_TwoWay_Universal,
     "railpolyp:railppp": SpriteImage_ControllerPath_Plus
 }

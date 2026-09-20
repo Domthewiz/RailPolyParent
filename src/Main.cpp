@@ -1,15 +1,17 @@
 #include "RailPolyParent/actor/CenterSwingMovementParent.h"
 #include "RailPolyParent/actor/DaenSwingParent.h"
+#include "actor/ActorPtrCache.h"
 #include <RailPolyParent/actor/CenterSwingParentBase.h>
 #include <RailPolyParent/actor/CenterRotationParentBase.h>
 #include <actor/ActorUniqueID.h>
 #include <telkin/Print.h>
 #include <RailPolyParent/RailPolyParent.h>
 #include <RailPolyParent/actor/RailPolyParentBase.h>
+
 #include <telkin/Telkin.h>
+
 #include <map_obj/ParentMovementMgr.h>
 #include <actor/ActorMgr.h>
-
 #include <RailPolyParent/actor/CenterMovementParent.h>
 #include <RailPolyParent/actor/DaenParent.h>
 #include <RailPolyParent/actor/OdoriParent.h>
@@ -22,7 +24,7 @@ red::Registrar* RailPolyParent::getRegistrar() {
 
 void main() { } // don't care :)
 
-// RailPolyParent - Add Dancing controller
+// There's probably a much better way to do this but i'm lazy lmao
 
 RailPolyParentBase* ParentMovementMgr_fetchPath(ParentMovementMgr* _this) {
     u8 movementId = _this->getMovementID();
@@ -170,12 +172,3 @@ CenterSwingParentBase* scanCenterSwing(u32 movement_id) {
     return nullptr;
 }
 tBranch(0x0287A1E8, scanCenterSwing, tk::BranchType::b); // scanCenterSwing(u32 movement_id)
-
-// void RailPolyMgr::initializeState_Drop() {
-//     tk::println("bruh i just got hacked lmao %u", _66[1]);
-//     if (!(_66[1] & 0xF)) {
-//         return;
-//     }
-//     mStateMgr.changeState(StateID_RailMove);
-// }
-// tBranch(0x029788E0, RailPolyMgr::initializeState_Drop, tk::BranchType::b); // RailPolyMgr::initializeState_Drop()

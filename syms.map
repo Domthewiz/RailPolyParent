@@ -31,3 +31,15 @@
     _ZN21CenterSwingParentBase6createEv = 0x02724C30;
     _ZN21CenterSwingParentBase7executeEv = 0x02724CA0;
     _ZN21CenterSwingParentBase9sTypeInfoE = 0x101EB2AC;
+
+// ObjSpinBolt
+    _ZN11ObjSpinBoltC2ERK16ActorCreateParam = 0x0283BF64;
+    _ZN11ObjSpinBolt6createEv = 0x0283C24C;
+    _ZN11ObjSpinBolt7executeEv = 0x0283C5B4;
+    _ZN11ObjSpinBolt9sTypeInfoE = 0x101EB4B8; // not sure
+
+// PairObjParentBase
+    _ZN17PairObjParentBaseC2ERK16ActorCreateParam = 0x02847ABC;
+    _ZN17PairObjParentBase6createEv = 0x02847D18;
+    _ZN17PairObjParentBase7executeEv = 0x02847E40;
+    _ZN17PairObjParentBase9sTypeInfoE = 0x101EB624;

@@ -300,18 +300,18 @@
 		<value nybble="17-18" title="Path ID" category="behavior" />
 		<checkbox nybble="8" title="Smooth movement" mask="4" comment="This nybble is separate from the &quot;Move strictly&quot; nybble and uses a different algorithm." category="behavior" />
 		<checkbox nybble="8" title="Move strictly" mask="8" comment="Used to determine how the path should be followed. Elaboration can be found in this sprite's notes." category="behavior" />
-		<list nybble="7" title="Custom Behavior Override*" comment="When using the &quot;Custom*&quot; end behavior, this option can override what actually happens. These names can be somewhat confusing so please read the associated nybbles that appear with each option for more info." category="behavior">
-			<entry value="0">Fall Down</entry>
-			<entry value="1">Go to loop starting node on event</entry>
-		</list>
-		<value nybble="1-2" title="Stopping Event ID" comment="When this event is activated, this will loop over from the last node in the path to node zero, then it will continue on the path and stop at the node before &quot;Second Stopping Node&quot;. When stopped before the &quot;Second Stopping Node&quot; node, it will resume once the event deactivates." id_type="event" category="events" requirednybble="7.1" requiredval="1"/>
-		<value nybble="9-10" title="Second Stopping Node" comment="Read &quot;Stopping Event ID&quot;" category="behavior" requirednybble="7.1" requiredval="1"/>
 		<list bit="31-32" title="When the last node is reached" category="behavior">
             <entry value="0">Stop</entry>
             <entry value="1">Go to loop start</entry>
             <entry value="2">Custom*</entry>
             <entry value="3">Stop with rumble</entry>
 		</list>
+		<list nybble="7" title="Custom Behavior Override*" requirednybble="8.3" requiredval="2" comment="When using the &quot;Custom*&quot; end behavior, this option can override what actually happens. These names can be somewhat confusing so please read the associated nybbles that appear with each option for more info." category="behavior">
+			<entry value="0">Fall Down</entry>
+			<entry value="1">Go to loop starting node on event</entry>
+		</list>
+		<value nybble="1-2" title="Stopping Event ID" comment="When this event is activated, this will loop over from the last node in the path to node zero, then it will continue on the path and stop at the node before &quot;Second Stopping Node&quot;. When stopped before the &quot;Second Stopping Node&quot; node, it will resume once the event deactivates." id_type="event" category="events" requirednybble="7.1" requiredval="1"/>
+		<value nybble="9-10" title="Second Stopping Node" comment="Read &quot;Stopping Event ID&quot;" category="behavior" requirednybble="7.1" requiredval="1"/>
 		<value nybble="9-10" title="Loop starting node" category="behavior" requirednybble="8.3" requiredval="1"/>
 		<checkbox nybble="12" title="Event activated" mask="8" category="behavior" />
 		<list nybble="13" title="Sine effect type" category="behavior">
@@ -616,4 +616,172 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite>
+	<!-- <sprite string_id="railpolyp:boltmp" name="Movement Controller - Bolt (Universally-controlled) [NON-FUNCTIONAL]">
+		<list nybble="10" title="Style" comment="The design of the bolt." category="behavior">
+			<entry value="0">Metal</entry>
+			<entry value="1">Stone</entry>
+		</list>
+		<checkbox nybble="11" title="Stone Block Sound" comment="If activated it will also play the stone block moving sound when spun." category="behavior" />
+		<value nybble="12" title="Return Delay" comment="Delays the returning movement of the sprites linked to this bolt." category="behavior" />
+		<value nybble="15" title="Distance" comment="The distance linked objects go." category="behavior" />
+		<value nybble="16" title="Unknown Value 16" />
+		<value nybble="21-22" title="Sprite Movement ID" comment="The ID of the bolt." id_type="movement" category="movement" />
+		<list nybble="23" title="Bolt Movement Speed" category="movement" >
+            <entry value="0">1.0</entry>
+			<entry value="4">0.0</entry>
+			<entry value="1">0.25</entry>
+			<entry value="2">0.5</entry>
+			<entry value="3">0.75</entry>
+            <entry value="0">1.0</entry>
+			<entry value="5">1.5</entry>
+			<entry value="6">2.0</entry>
+			<entry value="7">2.5</entry>
+			<entry value="8">3.0</entry>
+			<entry value="9">4.0</entry>
+			<entry value="10">5.0</entry>
+			<entry value="11">6.0</entry>
+			<entry value="12">7.0</entry>
+			<entry value="13">8.0</entry>
+			<entry value="14">9.0</entry>
+			<entry value="15">10.0</entry>
+		</list>
+        <list nybble="24" title="Bolt Direction" category="movement">
+            <entry value="0">Right</entry>
+            <entry value="1">Left</entry>
+            <entry value="2">Up</entry>
+            <entry value="3">Down</entry>
+        </list>
+        <list nybble="24" title="Rectangle Platform Info" category="movement">
+            <entry value="0">Follow Top platform</entry>
+            <entry value="1">Follow Bottom platform</entry>
+            <entry value="2">Doesn't move</entry>
+        </list>
+		<value nybble="19" title="Hill Distance" category="movement"/>
+		<value nybble="23-24" title="Hill Angle" category="movement"/>
+		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
+            <entry value="0">1.0</entry>
+            <entry value="1">0.1</entry>
+            <entry value="2">0.2</entry>
+            <entry value="3">0.3</entry>
+            <entry value="4">0.4</entry>
+            <entry value="5">0.5</entry>
+            <entry value="6">0.6</entry>
+            <entry value="7">0.7</entry>
+            <entry value="8">0.8</entry>
+            <entry value="9">0.9</entry>
+            <entry value="10">1.0</entry>
+            <entry value="11">1.1</entry>
+            <entry value="12">1.2</entry>
+            <entry value="13">1.3</entry>
+            <entry value="14">1.4</entry>
+            <entry value="15">1.5</entry>
+        </list>
+        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+		<layer title="Movement Type" category="movement" type="list">
+			<entry value="0">None</entry>
+			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
+			<entry value="2">Bolt (238)</entry>
+			<entry value="3">Path (100)</entry>
+			<entry value="4">Two-Way (70)</entry>
+			<entry value="6">BoltMushroom (241)</entry>
+			<entry value="7">No-bolt Mushroom (242)</entry>
+			<entry value="8">Shifting Platform (132)</entry>
+			<entry value="9">Spinning (214, 484)</entry>
+			<entry value="10">Rolling Hill (265)</entry>
+			<entry value="11">Moving Mushroom Lift (210)</entry>
+		</layer>
+		<initialstate title="Controller Movement ID" category="movement" type="value">
+		</initialstate>
+	</sprite> Doesn't work -->
+	<!-- <sprite string_id="railpolyp:pairobjmp" name="Movement Controller - Two-Way (Universally-controlled)">
+		<checkbox nybble="6" title="Slower Acceleration" category="behavior" />
+		<list bit="30-32" title="Direction" comment="Sets the initial direction." category="behavior">
+			<entry value="0">Right</entry>
+			<entry value="1">Left</entry>
+			<entry value="2">Up</entry>
+			<entry value="3">Down</entry>
+		</list>
+		<checkbox nybble="8" title="Add return delay to begin delay" mask="8" comment="If this is checked, the delay before first movement is Begin Delay + Return Delay." category="behavior" />
+		<value nybble="9" title="Unknown Value 9" />
+		<value nybble="12" title="Unknown Value 12" />
+		<value nybble="13" title="Return Delay" comment="The delay the movement starts AFTER the first run." category="behavior" />
+		<value nybble="14" title="Begin Delay" comment="The delay the movement starts BEFORE the second run starts." category="behavior" />
+		<value nybble="15" title="Distance" comment="Distance the linked sprite moves in blocks." category="behavior" />
+		<checkbox nybble="16" title="Do nothing" mask="8" comment="No idea why, but this changes its state to a state that does nothing, just like when distance is 0." category="behavior" />
+		<list nybble="16" title="Speed" category="behavior">
+			<entry value="0">0.25</entry>
+			<entry value="1">0.5</entry>
+			<entry value="2">1.0</entry>
+			<entry value="3">2.0</entry>
+		</list>
+		<value nybble="18" title="Useless" comment="Used by Nintendo, but ignored by the game" />
+		<value nybble="20" title="Useless 2" comment="Used by Nintendo, but ignored by the game" />
+		<value nybble="21-22" title="Sprite Movement ID" id_type="movement" category="movement" />
+		<list nybble="23" title="Bolt Movement Speed" category="movement" >
+            <entry value="0">1.0</entry>
+			<entry value="4">0.0</entry>
+			<entry value="1">0.25</entry>
+			<entry value="2">0.5</entry>
+			<entry value="3">0.75</entry>
+            <entry value="0">1.0</entry>
+			<entry value="5">1.5</entry>
+			<entry value="6">2.0</entry>
+			<entry value="7">2.5</entry>
+			<entry value="8">3.0</entry>
+			<entry value="9">4.0</entry>
+			<entry value="10">5.0</entry>
+			<entry value="11">6.0</entry>
+			<entry value="12">7.0</entry>
+			<entry value="13">8.0</entry>
+			<entry value="14">9.0</entry>
+			<entry value="15">10.0</entry>
+		</list>
+        <list nybble="24" title="Bolt Direction" category="movement">
+            <entry value="0">Right</entry>
+            <entry value="1">Left</entry>
+            <entry value="2">Up</entry>
+            <entry value="3">Down</entry>
+        </list>
+        <list nybble="24" title="Rectangle Platform Info" category="movement">
+            <entry value="0">Follow Top platform</entry>
+            <entry value="1">Follow Bottom platform</entry>
+            <entry value="2">Doesn't move</entry>
+        </list>
+		<value nybble="19" title="Hill Distance" category="movement"/>
+		<value nybble="23-24" title="Hill Angle" category="movement"/>
+		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
+            <entry value="0">1.0</entry>
+            <entry value="1">0.1</entry>
+            <entry value="2">0.2</entry>
+            <entry value="3">0.3</entry>
+            <entry value="4">0.4</entry>
+            <entry value="5">0.5</entry>
+            <entry value="6">0.6</entry>
+            <entry value="7">0.7</entry>
+            <entry value="8">0.8</entry>
+            <entry value="9">0.9</entry>
+            <entry value="10">1.0</entry>
+            <entry value="11">1.1</entry>
+            <entry value="12">1.2</entry>
+            <entry value="13">1.3</entry>
+            <entry value="14">1.4</entry>
+            <entry value="15">1.5</entry>
+        </list>
+        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+		<layer title="Movement Type" category="movement" type="list">
+			<entry value="0">None</entry>
+			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
+			<entry value="2">Bolt (238)</entry>
+			<entry value="3">Path (100)</entry>
+			<entry value="4">Two-Way (70)</entry>
+			<entry value="6">BoltMushroom (241)</entry>
+			<entry value="7">No-bolt Mushroom (242)</entry>
+			<entry value="8">Shifting Platform (132)</entry>
+			<entry value="9">Spinning (214, 484)</entry>
+			<entry value="10">Rolling Hill (265)</entry>
+			<entry value="11">Moving Mushroom Lift (210)</entry>
+		</layer>
+		<initialstate title="Controller Movement ID" category="movement" type="value">
+		</initialstate>
+	</sprite> Doesn't work -->
 </sprites>
