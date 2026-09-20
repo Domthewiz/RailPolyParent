@@ -1,42 +1,29 @@
-# RedCore-Example-Mod
+# RailPolyParent
+<img width="256" height="256" alt="image" src="https://github.com/user-attachments/assets/8416835e-065d-42a1-a4d3-2b993e1e04eb" />
 
 ## Overview
-This is a template repo for quickly getting a new NSMBU mod project up and running for [RedCore](https://github.com/Zenith-Team/RedCore).
+**RailPolyParent** is a **New Super Mario Bros. U** actor pack that adds custom movement controllers.
 
-## Setup Guide
-### Compiling
-Install [Tachyon](https://github.com/Zenith-Team/Tachyon) (requires [Node.js](https://nodejs.org/) v24+)
-```yml
-npm i -g --allow-remote=root https://github.com/Zenith-Team/Tachyon/releases/latest/download/tachyon.tgz
-```
-Build and run the project for your region (example with `US`)
-```rb
-tachyon pm install
-tachyon compile US
-tachyon launch US
-```
+## Features
+- **Movement Controller - Path (Plus)**: This path controller clone allows for use of all 255 path ids, aswell as adding brand-new custom end behaviors.
+- **Movement Controller - Pivotal Rotation (Spinning, Oscilating)**: This unique spinning pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
+- **Movement Controller - Pivotal Rotation (Swaying, Oscilating)**: This unique swaying pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
+- **Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)**: This utilitarian spinning pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
+- **Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)**: This utilitarian swaying pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
+- **Movement Controller - Dancing**: This is still WIP, but once it is finished it will function like the one from NSMBW.
 
-### Developing
-The project is already set up for you with all the necessary headers and configurations, so you may get started coding immediately. The standard development loop is:
-- Edit code
-- Build with `tachyon compile`
-- Test with `tachyon launch`
+### For Modders
+- Download the **`bundle`** from the [latest release](https://github.com/Domthewiz/RailPolyParent/releases/latest) and extract it to your mod folder, merging the `content` and `code` folders into your project. The actors will now be available in-game.
+    - The `rules.txt` doesn't matter as long as the `version = 8` in your own.
+- Running on console: Use the [Telkin](https://github.com/Zenith-Team/Telkin) aroma plugin to load your whole mod.
+    - Place the `code`/`content` folders in `sd:/wiiu/telkin/TITLEID/` where `TITLEID` is the [title ID](https://wiiubrew.org/wiki/Title_database#00050000:_Game_Application_Titles) of your game's region (without dashes).
+- Running on Cemu: Load and distribute your mod as a GraphicPack by placing it in Cemu's `graphicPacks` folder and activating it in the game's settings.
 
-To get proper autocomplete and smart IDE features, it is recommended to use an editor which supports the [clangd](https://clangd.llvm.org) language server as a plugin or backend (make sure to uninstall any other C++ plugins such as Microsoft's). Then, to activate the configuration for the project, run `tachyon compile US --compiledb` once which will generate a `compile_commands.json` file. Restart the IDE and autocomplete should be active.
+> [!WARNING]
+> Make sure to use a 2.7+ version of Cemu, which can be found [here](https://cemu.info/ActionBuilds.php).
 
-A simple example actor has been included to demonstrate registration and avoid rewriting boilerplate, but it is highly recommended to change the names and paths from the default "example" placeholders to a unique identifier for your mod in the following places:
-- `project.json5` config
-- `include` directory
-- `main.xml` editor patch
-- `Main.cpp` registrar namespace
--  `namespace example` everywhere else
+> [!IMPORTANT]
+> Make sure to also install the [editor patch](https://github.com/Domthewiz/RailPolyParent/tree/main/editor) so that you can place the actors in your levels!
 
-### Distribution
-To build a release of your code mod for others to download and use in their own mods, follow the steps below:
-- Compile the code for every target with `tachyon package`, this will produce a `package.zip`.
-- Pack your Pyamoto editor patch into `patch.zip`.
-- Create a GitHub release on your repo, following [semver](https://semver.org/) for the name. Upload `package.zip` and `patch.zip` to the artifacts and publish it as latest.
-
-Users may now extract the `package.zip` into their mod to apply the code/assets, and install the editor patch by linking `https://github.com/YourName/Repo` in Pyamoto. Developers may now install your mod in their environment by running `tachyon pm install YourName/Repo`.
-
-To pack your mod as a self-contained bundle, including all dependencies and assets, run `tachyon bundle`. This produces a `bundle-ExampleMod-1.0.0.zip` which is ready to be installed as a standalone mod either as a Cemu graphic pack or a [Telkin Loader](https://github.com/Zenith-Team/Telkin) mod on console. Uploading this as a GitHub release also allows one-click-install as a Cemu graphic pack by hotlinking to the .zip file directly in the "Download Pack from URL" menu.
+> [!NOTE]
+> This was compiled and published using locally-edited headers, so cloning this repository and trying to compile it yourself may not function properly. This will not be an issue once RedCore 2.0.0 releases.
