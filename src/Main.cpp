@@ -1,5 +1,4 @@
-#include "RailPolyParent/actor/CenterRotationParentBase.h"
-#include "RailPolyParent/actor/DaenParent.h"
+#include <RailPolyParent/actor/CenterRotationParentBase.h>
 #include <actor/ActorUniqueID.h>
 #include <telkin/Print.h>
 #include <RailPolyParent/RailPolyParent.h>
@@ -7,7 +6,10 @@
 #include <telkin/Telkin.h>
 #include <map_obj/ParentMovementMgr.h>
 #include <actor/ActorMgr.h>
+
+#include <RailPolyParent/actor/DaenParent.h>
 #include <RailPolyParent/actor/OdoriParent.h>
+#include <RailPolyParent/actor/RailPolyPlusParent.h>
 
 red::Registrar* RailPolyParent::getRegistrar() {
     static red::Registrar sRegistrar("railpolyp");
@@ -37,7 +39,7 @@ RailPolyParentBase* ParentMovementMgr_fetchPath(ParentMovementMgr* _this) {
         }
         
         // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile) {
+        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile) {
             return targetactor;
         }
         
@@ -46,7 +48,6 @@ RailPolyParentBase* ParentMovementMgr_fetchPath(ParentMovementMgr* _this) {
             return targetactor;
         }
     }
-    tk::println("ParentMovementMgr iteration failed, returning nullptr.");
     return nullptr;
 }
 tBranch(0x02849E54, ParentMovementMgr_fetchPath, tk::BranchType::b); // ParentMovementMgr::fetchPath(ParentMovementMgr*)
@@ -89,7 +90,7 @@ RailPolyParentBase* PathControlledActor_getController(u32 movement_id) {
         }
         
         // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile) {
+        if (targetactor->getProfile() == RailPolyParent::OdoriParent::sProfile || targetactor->getProfile() == RailPolyParent::RailPolyPlusParent::sProfile) {
             return targetactor;
         }
         
@@ -98,7 +99,6 @@ RailPolyParentBase* PathControlledActor_getController(u32 movement_id) {
             return targetactor;
         }
     }
-    tk::println("PathControlledActor iteration failed, returning nullptr.");
     return nullptr;
 }
 tBranch(0x0287ACD0, PathControlledActor_getController, tk::BranchType::b); // PathControlledActor::getController(u32 movement_id)
@@ -131,7 +131,15 @@ CenterRotationParentBase* scanCenterRotation(u32 movement_id) {
             return targetactor;
         }
     }
-    tk::println("scanCenterRotation iteration failed, returning nullptr.");
     return nullptr;
 }
 tBranch(0x0287A2A4, scanCenterRotation, tk::BranchType::b); // scanCenterRotation(u32 movement_id)
+
+void RailPolyMgr::initializeState_Drop() {
+    tk::println("bruh i just got hacked lmao %u", _66[1]);
+    if (!(_66[1] & 0xF)) {
+        return;
+    }
+    mStateMgr.changeState(StateID_RailMove);
+}
+tBranch(0x029788E0, RailPolyMgr::initializeState_Drop, tk::BranchType::b); // RailPolyMgr::initializeState_Drop()

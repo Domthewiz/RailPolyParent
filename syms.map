@@ -1,10 +1,21 @@
 @addresses_from "00050000-10101D00" // US v1.3.0 (v64)
 
+// RailPolyMgr
+    _ZN11RailPolyMgr10initializeERN4sead7Vector2IfEEjbhjtf = 0x02977ED0;
+    _ZN11RailPolyMgr12StateID_DropE = 0x1022BECC;
+    _ZN11RailPolyMgr19StateID_RailMoveEndE = 0x1022BEAC;
+    _ZN11RailPolyMgr16StateID_RailMoveE = 0x1022BE6C;
+
+// SwitchFlagMgr
+    _ZN13SwitchFlagMgr16condenseEventIdsEjj = 0x0269D654;
+
 // RailPolyParentBase
     _ZN18RailPolyParentBaseC2ERK16ActorCreateParam = 0x0286BE94;
     _ZN18RailPolyParentBase6createEv = 0x0286C11C;
     _ZN18RailPolyParentBase7executeEv = 0x0286C268;
     _ZN18RailPolyParentBase9sTypeInfoE = 0x101EA840;
+    _ZN18RailPolyParentBase25StateID_ControllerPassiveE = 0x1022739C;
+    _ZN18RailPolyParentBase24StateID_ControllerActiveE = 0x1022737C;
 
 // CenterRotationParentBase
     _ZN24CenterRotationParentBaseC2ERK16ActorCreateParam = 0x02722BF0;

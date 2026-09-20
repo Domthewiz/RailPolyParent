@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <game name="RailPolyParent" version="1.0" description="Custom movement controllers for NSMBU">
     <file name="spritedata" path="spritedata.xml" />
+    <folder name="sprites" path="sprites" />
+    <file name="sprites" path="sprites.py" />
 </game>

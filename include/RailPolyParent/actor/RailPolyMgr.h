@@ -11,7 +11,7 @@ public:
         u16 y;
         f32 speed;
         f32 accel;
-        u16 flags;
+        u16 delay;
         u8  unknown[3];
     };
     static_assert(sizeof(PathNode) == 0x14);
@@ -29,6 +29,11 @@ public:
     void initialize(sead::Vector2f& pos, u32 path_id, bool strict_movement, u8 end_behavior, u32 start_node, u16 loop_start_node, f32 param_8);
     // Address: 0x02977E1C
     bool setRailInfo(u32 param_2);
+
+    bool isState(StateID* state_id) const
+    {
+        return mStateMgr.getStateID() == state_id;
+    }
 
     PathNode* getPathNodes() const
     {
