@@ -42,7 +42,7 @@
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
 		<value nybble="24" title="Unknown Value 24" />
 	</sprite>
-	<sprite string_id="railpolyp:daenparent" name="Movement Controller - Pivotal Rotation (Spinning, Shifting)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
+	<sprite string_id="railpolyp:daenparent" name="Movement Controller - Pivotal Rotation (Spinning, Oscilating)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
 		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
 		<list nybble="5" title="Starting Rotation" comment="The angle it starts rotating at in degrees. Used to desync other sprites." category="behavior">
 			<entry value="0">0°</entry>
@@ -153,7 +153,129 @@
 			<entry value="6">+6</entry>
 			<entry value="7">+7</entry>
 		</layer>
-		<initialstate title="Y Offset amount" mask="4" category="behavior" type="list">
+		<initialstate title="Y Offset amount" category="behavior" type="list">
+			<entry value="8">-8</entry>
+			<entry value="9">-7</entry>
+			<entry value="10">-6</entry>
+			<entry value="11">-5</entry>
+			<entry value="12">-4</entry>
+			<entry value="13">-3</entry>
+			<entry value="14">-2</entry>
+			<entry value="15">-1</entry>
+			<entry value="0">0</entry>
+			<entry value="1">+1</entry>
+			<entry value="2">+2</entry>
+			<entry value="3">+3</entry>
+			<entry value="4">+4</entry>
+			<entry value="5">+5</entry>
+			<entry value="6">+6</entry>
+			<entry value="7">+7</entry>
+		</initialstate>
+	</sprite>
+	<sprite string_id="railpolyp:swaydaenparent" name="Movement Controller - Pivotal Rotation (Swaying, Oscilating)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
+		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events" requirednybble="9.2" requiredval="4-7"/>
+		<checkbox nybble="5" title="Unknown Value 5" comment="No effect at all." />
+		<list nybble="6" title="Sway Start Offset" comment="Offset [Sway Direction]. Sway direction is inverted when 'Reversed Movement' is used." category="behavior">
+			<entry value="0">None [Counter-Clockwise]</entry>
+			<entry value="1">(Arc / 2) * cos(22.5°) : [Counter-Clockwise]</entry>
+			<entry value="2">(Arc / 2) * cos(45°) : [Counter-Clockwise]</entry>
+			<entry value="3">(Arc / 2) * cos(67.5°) : [Counter-Clockwise]</entry>
+			<entry value="4">(Arc / 2) * cos(90°) : [Clockwise]</entry>
+			<entry value="5">(Arc / 2) * cos(112.5°) : [Clockwise]</entry>
+			<entry value="6">(Arc / 2) * cos(135°) : [Clockwise]</entry>
+			<entry value="7">(Arc / 2) * cos(157.5°) : [Clockwise]</entry>
+			<entry value="8">None [Clockwise]</entry>
+			<entry value="9">(Arc / 2) * cos(202.5°) : [Clockwise]</entry>
+			<entry value="10">(Arc / 2) * cos(225°) : [Clockwise]</entry>
+			<entry value="11">(Arc / 2) * cos(247.5°) : [Clockwise]</entry>
+			<entry value="12">(Arc / 2) * cos(270°) : [Counter-Clockwise]</entry>
+			<entry value="13">(Arc / 2) * cos(292.5°) : [Counter-Clockwise]</entry>
+			<entry value="14">(Arc / 2) * cos(315°) : [Counter-Clockwise]</entry>
+			<entry value="15">(Arc / 2) * cos(337.5°) : [Counter-Clockwise]</entry>
+		</list>
+		<checkbox nybble="7" title="Unknown Value 7" comment="No effect at all." />
+		<value nybble="8" title="Unknown Value 8" />
+		<checkbox nybble="9" title="Reversed Movement" category="behavior" />
+		<checkbox nybble="9" title="Event Activated" mask="4" category="behavior" />
+		<list nybble="10" title="Arc Middle Rotation" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90°</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180°</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270°</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<value nybble="13" title="Sway Delay" comment="Delays the movement of the sprite when switching directions." category="behavior" />
+		<list nybble="15" title="Sway arc" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90°</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180°</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270°</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<value nybble="16" title="Swaying Speed" comment="The speed it sways." category="behavior" />
+		<value nybble="18" title="Unknown Value 18" />
+		<value nybble="20" title="Unknown Value 20" />
+		<value nybble="21-22" title="Movement ID" comment="Use this to assign coins and other objects to this sprite." id_type="movement" category="movement" />
+		<value nybble="24" title="Useless Value 24" comment="Only used as 1 and 0." />
+		<list nybble="23" title="Shifting position phase shift">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<layer title="X Offset amount" category="behavior" type="list">
+			<entry value="8">-8</entry>
+			<entry value="9">-7</entry>
+			<entry value="10">-6</entry>
+			<entry value="11">-5</entry>
+			<entry value="12">-4</entry>
+			<entry value="13">-3</entry>
+			<entry value="14">-2</entry>
+			<entry value="15">-1</entry>
+			<entry value="0">0</entry>
+			<entry value="1">+1</entry>
+			<entry value="2">+2</entry>
+			<entry value="3">+3</entry>
+			<entry value="4">+4</entry>
+			<entry value="5">+5</entry>
+			<entry value="6">+6</entry>
+			<entry value="7">+7</entry>
+		</layer>
+		<initialstate title="Y Offset amount" category="behavior" type="list">
 			<entry value="8">-8</entry>
 			<entry value="9">-7</entry>
 			<entry value="10">-6</entry>
@@ -181,20 +303,6 @@
 		<list nybble="7" title="Custom Behavior Override*" comment="When using the &quot;Custom*&quot; end behavior, this option can override what actually happens. These names can be somewhat confusing so please read the associated nybbles that appear with each option for more info." category="behavior">
 			<entry value="0">Fall Down</entry>
 			<entry value="1">Go to loop starting node on event</entry>
-			<entry value="2">45°</entry>
-			<entry value="3">67.5°</entry>
-			<entry value="4">90°</entry>
-			<entry value="5">112.5°</entry>
-			<entry value="6">135°</entry>
-			<entry value="7">157.5°</entry>
-			<entry value="8">180°</entry>
-			<entry value="9">202.5°</entry>
-			<entry value="10">225°</entry>
-			<entry value="11">247.5°</entry>
-			<entry value="12">270°</entry>
-			<entry value="13">292.5°</entry>
-			<entry value="14">315°</entry>
-			<entry value="15">337.5°</entry>
 		</list>
 		<value nybble="1-2" title="Stopping Event ID" comment="When this event is activated, this will loop over from the last node in the path to node zero, then it will continue on the path and stop at the node before &quot;Second Stopping Node&quot;. When stopped before the &quot;Second Stopping Node&quot; node, it will resume once the event deactivates." id_type="event" category="events" requirednybble="7.1" requiredval="1"/>
 		<value nybble="9-10" title="Second Stopping Node" comment="Read &quot;Stopping Event ID&quot;" category="behavior" requirednybble="7.1" requiredval="1"/>
@@ -233,5 +341,279 @@
 		<checkbox nybble="20" title="Reset when off-screen" comment="When the path controller is off-screen, it resets itself to its original position and waits for the triggering event id to be activated, regardless of the &quot;Event activated&quot; checkbox." category="behavior" />
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
 		<value nybble="24" title="Unknown Value 24" />
+	</sprite>
+	<sprite string_id="railpolyp:centermp" name="Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
+		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
+		<list nybble="5" title="Starting Rotation" comment="The angle it starts rotating at in degrees. Used to desync other sprites." category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<list nybble="6" title="Swing Arc" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90° (Quadrant)</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180° (Semicircle)</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270° (Three-quarter circle)</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<list nybble="8" title="Event Mode" comment="This changes how events interact with this controller." category="behavior">
+			<entry value="0">Event Triggered - Rotates Back When Deactivated (Fastest)</entry>
+			<entry value="1">Already Spinning - Event Reverses Direction</entry>
+			<entry value="2">Continuous Spinning While Event Active</entry>
+			<entry value="4">Event Triggered - Rotates Back When Deactivated (Slow)</entry>
+			<entry value="8">Event Triggered - Rotates Back When Deactivated (Slowest)</entry>
+		</list>
+		<dualbox bit="36" title1="Spins Counter-Clockwise" title2="Spins Clockwise" category="behavior" />
+		<list nybble="10" title="Effect" category="behavior">
+			<entry value="0">No Effect</entry>
+			<entry value="1">POW-Block-Sound</entry>
+			<entry value="2">Coin-Sound</entry>
+			<entry value="3">Coin-Sound (2x) + POW-Block-Sound</entry>
+			<entry value="4">Zoom alteration</entry>
+			<entry value="5">Zoom alteration</entry>
+			<entry value="6">Zoom alteration</entry>
+			<entry value="7">Zoom alteration</entry>
+			<entry value="8">Zoom alteration</entry>
+			<entry value="9">Zoom alteration</entry>
+			<entry value="10">Zoom alteration</entry>
+			<entry value="11">Zoom alteration</entry>
+			<entry value="12">Zoom alteration</entry>
+		</list>
+		<list nybble="16" title="Spinning Speed" comment="The spinning speed." category="behavior">
+			<entry value="4">Very Slow</entry>
+			<entry value="7">Slow</entry>
+			<entry value="0">Slow - Medium</entry>
+			<entry value="1">Medium</entry>
+			<entry value="2">Medium - Fast</entry>
+			<entry value="3">Fast</entry>
+			<entry value="5">Faster</entry>
+			<entry value="6">Very Fast</entry>
+		</list>
+		<value nybble="18" title="Unknown Value 18" comment="I saw no real change." />
+		<value nybble="20" title="Unknown Value 20" comment="Sprite 390 is on steroids with this option used." />
+		<value nybble="21-22" title="Sprite Movement ID" comment="Use this to assign coins and other objects to this sprite." id_type="movement" category="movement" />
+		<list nybble="23" title="Bolt Movement Speed" category="movement" >
+            <entry value="0">1.0</entry>
+			<entry value="4">0.0</entry>
+			<entry value="1">0.25</entry>
+			<entry value="2">0.5</entry>
+			<entry value="3">0.75</entry>
+            <entry value="0">1.0</entry>
+			<entry value="5">1.5</entry>
+			<entry value="6">2.0</entry>
+			<entry value="7">2.5</entry>
+			<entry value="8">3.0</entry>
+			<entry value="9">4.0</entry>
+			<entry value="10">5.0</entry>
+			<entry value="11">6.0</entry>
+			<entry value="12">7.0</entry>
+			<entry value="13">8.0</entry>
+			<entry value="14">9.0</entry>
+			<entry value="15">10.0</entry>
+		</list>
+        <list nybble="24" title="Bolt Direction" category="movement">
+            <entry value="0">Right</entry>
+            <entry value="1">Left</entry>
+            <entry value="2">Up</entry>
+            <entry value="3">Down</entry>
+        </list>
+        <list nybble="24" title="Rectangle Platform Info" category="movement">
+            <entry value="0">Follow Top platform</entry>
+            <entry value="1">Follow Bottom platform</entry>
+            <entry value="2">Doesn't move</entry>
+        </list>
+		<value nybble="19" title="Hill Distance" category="movement"/>
+		<value nybble="23-24" title="Hill Angle" category="movement"/>
+		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
+            <entry value="0">1.0</entry>
+            <entry value="1">0.1</entry>
+            <entry value="2">0.2</entry>
+            <entry value="3">0.3</entry>
+            <entry value="4">0.4</entry>
+            <entry value="5">0.5</entry>
+            <entry value="6">0.6</entry>
+            <entry value="7">0.7</entry>
+            <entry value="8">0.8</entry>
+            <entry value="9">0.9</entry>
+            <entry value="10">1.0</entry>
+            <entry value="11">1.1</entry>
+            <entry value="12">1.2</entry>
+            <entry value="13">1.3</entry>
+            <entry value="14">1.4</entry>
+            <entry value="15">1.5</entry>
+        </list>
+        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+		<layer title="Movement Type" category="movement" type="list">
+			<entry value="0">None</entry>
+			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
+			<entry value="2">Bolt (238)</entry>
+			<entry value="3">Path (100)</entry>
+			<entry value="4">Two-Way (70)</entry>
+			<entry value="6">BoltMushroom (241)</entry>
+			<entry value="7">No-bolt Mushroom (242)</entry>
+			<entry value="8">Shifting Platform (132)</entry>
+			<entry value="9">Spinning (214, 484)</entry>
+			<entry value="10">Rolling Hill (265)</entry>
+			<entry value="11">Moving Mushroom Lift (210)</entry>
+		</layer>
+		<initialstate title="Controller Movement ID" category="movement" type="value">
+		</initialstate>
+	</sprite>
+	<sprite string_id="railpolyp:swaycentermp" name="Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
+		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events" requirednybble="9.2" requiredval="4-7"/>
+		<checkbox nybble="5" title="Unknown Value 5" comment="No effect at all." />
+		<list nybble="6" title="Sway Start Offset" comment="Offset [Sway Direction]. Sway direction is inverted when 'Reversed Movement' is used." category="behavior">
+			<entry value="0">None [Counter-Clockwise]</entry>
+			<entry value="1">(Arc / 2) * cos(22.5°) : [Counter-Clockwise]</entry>
+			<entry value="2">(Arc / 2) * cos(45°) : [Counter-Clockwise]</entry>
+			<entry value="3">(Arc / 2) * cos(67.5°) : [Counter-Clockwise]</entry>
+			<entry value="4">(Arc / 2) * cos(90°) : [Clockwise]</entry>
+			<entry value="5">(Arc / 2) * cos(112.5°) : [Clockwise]</entry>
+			<entry value="6">(Arc / 2) * cos(135°) : [Clockwise]</entry>
+			<entry value="7">(Arc / 2) * cos(157.5°) : [Clockwise]</entry>
+			<entry value="8">None [Clockwise]</entry>
+			<entry value="9">(Arc / 2) * cos(202.5°) : [Clockwise]</entry>
+			<entry value="10">(Arc / 2) * cos(225°) : [Clockwise]</entry>
+			<entry value="11">(Arc / 2) * cos(247.5°) : [Clockwise]</entry>
+			<entry value="12">(Arc / 2) * cos(270°) : [Counter-Clockwise]</entry>
+			<entry value="13">(Arc / 2) * cos(292.5°) : [Counter-Clockwise]</entry>
+			<entry value="14">(Arc / 2) * cos(315°) : [Counter-Clockwise]</entry>
+			<entry value="15">(Arc / 2) * cos(337.5°) : [Counter-Clockwise]</entry>
+		</list>
+		<checkbox nybble="7" title="Unknown Value 7" comment="No effect at all." />
+		<value nybble="8" title="Unknown Value 8" />
+		<checkbox nybble="9" title="Reversed Movement" category="behavior" />
+		<checkbox nybble="9" title="Event Activated" mask="4" category="behavior" />
+		<list nybble="10" title="Arc Middle Rotation" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90°</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180°</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270°</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<value nybble="13" title="Sway Delay" comment="Delays the movement of the sprite when switching directions." category="behavior" />
+		<list nybble="15" title="Sway arc" category="behavior">
+			<entry value="0">0°</entry>
+			<entry value="1">22.5°</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
+			<entry value="4">90°</entry>
+			<entry value="5">112.5°</entry>
+			<entry value="6">135°</entry>
+			<entry value="7">157.5°</entry>
+			<entry value="8">180°</entry>
+			<entry value="9">202.5°</entry>
+			<entry value="10">225°</entry>
+			<entry value="11">247.5°</entry>
+			<entry value="12">270°</entry>
+			<entry value="13">292.5°</entry>
+			<entry value="14">315°</entry>
+			<entry value="15">337.5°</entry>
+		</list>
+		<value nybble="16" title="Swaying Speed" comment="The speed it sways." category="behavior" />
+		<value nybble="18" title="Unknown Value 18" />
+		<value nybble="20" title="Unknown Value 20" />
+		<value nybble="21-22" title="Sprite Movement ID" comment="Use this to link this controller with the objects you want to sway." id_type="movement" category="movement" />
+		<list nybble="23" title="Bolt Movement Speed" category="movement" >
+            <entry value="0">1.0</entry>
+			<entry value="4">0.0</entry>
+			<entry value="1">0.25</entry>
+			<entry value="2">0.5</entry>
+			<entry value="3">0.75</entry>
+            <entry value="0">1.0</entry>
+			<entry value="5">1.5</entry>
+			<entry value="6">2.0</entry>
+			<entry value="7">2.5</entry>
+			<entry value="8">3.0</entry>
+			<entry value="9">4.0</entry>
+			<entry value="10">5.0</entry>
+			<entry value="11">6.0</entry>
+			<entry value="12">7.0</entry>
+			<entry value="13">8.0</entry>
+			<entry value="14">9.0</entry>
+			<entry value="15">10.0</entry>
+		</list>
+        <list nybble="24" title="Bolt Direction" category="movement">
+            <entry value="0">Right</entry>
+            <entry value="1">Left</entry>
+            <entry value="2">Up</entry>
+            <entry value="3">Down</entry>
+        </list>
+        <list nybble="24" title="Rectangle Platform Info" category="movement">
+            <entry value="0">Follow Top platform</entry>
+            <entry value="1">Follow Bottom platform</entry>
+            <entry value="2">Doesn't move</entry>
+        </list>
+		<value nybble="19" title="Hill Distance" category="movement"/>
+		<value nybble="23-24" title="Hill Angle" category="movement"/>
+		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
+            <entry value="0">1.0</entry>
+            <entry value="1">0.1</entry>
+            <entry value="2">0.2</entry>
+            <entry value="3">0.3</entry>
+            <entry value="4">0.4</entry>
+            <entry value="5">0.5</entry>
+            <entry value="6">0.6</entry>
+            <entry value="7">0.7</entry>
+            <entry value="8">0.8</entry>
+            <entry value="9">0.9</entry>
+            <entry value="10">1.0</entry>
+            <entry value="11">1.1</entry>
+            <entry value="12">1.2</entry>
+            <entry value="13">1.3</entry>
+            <entry value="14">1.4</entry>
+            <entry value="15">1.5</entry>
+        </list>
+        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+		<layer title="Movement Type" category="movement" type="list">
+			<entry value="0">None</entry>
+			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
+			<entry value="2">Bolt (238)</entry>
+			<entry value="3">Path (100)</entry>
+			<entry value="4">Two-Way (70)</entry>
+			<entry value="6">BoltMushroom (241)</entry>
+			<entry value="7">No-bolt Mushroom (242)</entry>
+			<entry value="8">Shifting Platform (132)</entry>
+			<entry value="9">Spinning (214, 484)</entry>
+			<entry value="10">Rolling Hill (265)</entry>
+			<entry value="11">Moving Mushroom Lift (210)</entry>
+		</layer>
+		<initialstate title="Controller Movement ID" category="movement" type="value">
+		</initialstate>
 	</sprite>
 </sprites>

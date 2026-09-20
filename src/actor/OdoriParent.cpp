@@ -14,7 +14,7 @@ OdoriParent::OdoriParent(const ActorCreateParam& param)
 { }
 
 ActorBase::Result OdoriParent::create() {
-    tk::println("OdoriParent was created!");
+    // tk::println("OdoriParent was created!");
 
     return RailPolyParentBase::create();
 }

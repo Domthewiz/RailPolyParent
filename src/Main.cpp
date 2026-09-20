@@ -1,3 +1,6 @@
+#include "RailPolyParent/actor/CenterSwingMovementParent.h"
+#include "RailPolyParent/actor/DaenSwingParent.h"
+#include <RailPolyParent/actor/CenterSwingParentBase.h>
 #include <RailPolyParent/actor/CenterRotationParentBase.h>
 #include <actor/ActorUniqueID.h>
 #include <telkin/Print.h>
@@ -7,6 +10,7 @@
 #include <map_obj/ParentMovementMgr.h>
 #include <actor/ActorMgr.h>
 
+#include <RailPolyParent/actor/CenterMovementParent.h>
 #include <RailPolyParent/actor/DaenParent.h>
 #include <RailPolyParent/actor/OdoriParent.h>
 #include <RailPolyParent/actor/RailPolyPlusParent.h>
@@ -122,7 +126,7 @@ CenterRotationParentBase* scanCenterRotation(u32 movement_id) {
         }
         
         // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::DaenParent::sProfile) {
+        if (targetactor->getProfile() == RailPolyParent::DaenParent::sProfile || targetactor->getProfile() == RailPolyParent::CenterMovementParent::sProfile) {
             return targetactor;
             
         }
@@ -134,6 +138,38 @@ CenterRotationParentBase* scanCenterRotation(u32 movement_id) {
     return nullptr;
 }
 tBranch(0x0287A2A4, scanCenterRotation, tk::BranchType::b); // scanCenterRotation(u32 movement_id)
+
+CenterSwingParentBase* scanCenterSwing(u32 movement_id) {
+    u8 movementId = movement_id;
+
+    ActorMgr* actorMgr = ActorMgr::instance();
+    for (auto it = actorMgr->getActorBegin(); it != actorMgr->getActorEnd(); it++) {
+        if (*it == nullptr) {
+            continue;
+        }
+
+        CenterSwingParentBase* targetactor = sead::DynamicCast<CenterSwingParentBase>(*it);
+        if (!targetactor) {
+            continue;
+        }
+        
+        if (targetactor->getParamEx().course.movement_id != movementId) {
+            continue;
+        }
+        
+        // if we come across one of my custom movement controllers, accept it.
+        if (targetactor->getProfile() == RailPolyParent::DaenSwingParent::sProfile || targetactor->getProfile() == RailPolyParent::CenterSwingMovementParent::sProfile) {
+            return targetactor;
+            
+        }
+        // 0x27 is the swaying pivotal rotation controller profile id
+        if (targetactor->getProfileID() == 0x27) {
+            return targetactor;
+        }
+    }
+    return nullptr;
+}
+tBranch(0x0287A1E8, scanCenterSwing, tk::BranchType::b); // scanCenterSwing(u32 movement_id)
 
 // void RailPolyMgr::initializeState_Drop() {
 //     tk::println("bruh i just got hacked lmao %u", _66[1]);

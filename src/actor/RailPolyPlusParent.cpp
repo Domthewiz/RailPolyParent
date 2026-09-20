@@ -88,15 +88,14 @@ bool RailPolyPlusParent::execute() {
         return false;
     }
     
-    if (mRail.isState(&RailPolyMgr::StateID_Drop)) {
-        // Custom end behavior
+    if ((mParam0 >> 0x10 & 0x3) == RailPolyMgr::cEndBehavior_Drop) {
+        // Custom behavior, I plan to add more in the future but this will be sufficient
         switch (mParam0 >> 0x14 & 0xF) {
             case cCustomEndBehavior_Vanilla:
                 break;
             case cCustomEndBehavior_StopLoopEvent:
                 stopLoopEventBehavior();
                 break;
-            
         }
     }
 
@@ -104,29 +103,31 @@ bool RailPolyPlusParent::execute() {
 }
 
 void RailPolyPlusParent::stopLoopEventBehavior() {
-    // To counteract the "drop"
-    mRail.setPos(mRailPreviousPos);
-    mRail.setSpeed(mRailPreviousSpeed);
+    if (mRail.isState(&RailPolyMgr::StateID_Drop)) {
+        // To counteract the "drop"
+        mRail.setPos(mRailPreviousPos);
+        mRail.setSpeed(mRailPreviousSpeed);
 
-    // Do some trickery with the path node count, current node, and loop node. but it works :)
-    if (SwitchFlagMgr::instance()->isActivated(mSwitchFlag1 - 1)) {
-        mRail.setCurrentNodeIdx(0);
-        if (mRail.getNodeCount() != mRail.getLoopStartIdx()) {
-            mRailStoredNodeIdx1 = mRail.getNodeCount();
-            mRail.setCurrentNode(mRail.getPathNodes());
+        // Do some trickery with the path node count, current node, and loop node. but it works :)
+        if (SwitchFlagMgr::instance()->isActivated(mSwitchFlag1 - 1)) {
+            mRail.setCurrentNodeIdx(0);
+            if (mRail.getNodeCount() != mRail.getLoopStartIdx()) {
+                mRailStoredNodeIdx1 = mRail.getNodeCount();
+                mRail.setCurrentNode(mRail.getPathNodes());
+                mRail.getStateMgr().changeState(RailPolyMgr::StateID_RailMove);
+            }
+            mRail.setNodeCount(mRail.getLoopStartIdx());
+            
+            return;
+        }
+        if (mRail.getNodeCount() == mRail.getLoopStartIdx()) {
+            mRail.setNodeCount(mRailStoredNodeIdx1);
+            mRail.setCurrentNodeIdx(mRail.getLoopStartIdx());
+            mRail.setCurrentNode(mRail.getPathNodes() + mRail.getLoopStartIdx());
             mRail.getStateMgr().changeState(RailPolyMgr::StateID_RailMove);
         }
-        mRail.setNodeCount(mRail.getLoopStartIdx());
-        
         return;
     }
-    if (mRail.getNodeCount() == mRail.getLoopStartIdx()) {
-        mRail.setNodeCount(mRailStoredNodeIdx1);
-        mRail.setCurrentNodeIdx(mRail.getLoopStartIdx());
-        mRail.setCurrentNode(mRail.getPathNodes() + mRail.getLoopStartIdx());
-        mRail.getStateMgr().changeState(RailPolyMgr::StateID_RailMove);
-    }
-    return;
 }
 
 }

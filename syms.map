@@ -1,5 +1,8 @@
 @addresses_from "00050000-10101D00" // US v1.3.0 (v64)
 
+// ParentMovementMgr
+    _ZN17ParentMovementMgr12linkPivotal2ENS_23PivotalRotationSettingsE = 0x0284B7C8;
+
 // RailPolyMgr
     _ZN11RailPolyMgr10initializeERN4sead7Vector2IfEEjbhjtf = 0x02977ED0;
     _ZN11RailPolyMgr12StateID_DropE = 0x1022BECC;
@@ -22,3 +25,9 @@
     _ZN24CenterRotationParentBase6createEv = 0x02722D54;
     _ZN24CenterRotationParentBase7executeEv = 0x02722E30;
     _ZN24CenterRotationParentBase9sTypeInfoE = 0x101EB294;
+
+// CenterSwingParentBase
+    _ZN21CenterSwingParentBaseC2ERK16ActorCreateParam = 0x02724B8C;
+    _ZN21CenterSwingParentBase6createEv = 0x02724C30;
+    _ZN21CenterSwingParentBase7executeEv = 0x02724CA0;
+    _ZN21CenterSwingParentBase9sTypeInfoE = 0x101EB2AC;

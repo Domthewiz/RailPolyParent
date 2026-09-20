@@ -1,17 +1,17 @@
 
 #pragma once
 #include "map_obj/ParentMovementMgr.h"
-#include <RailPolyParent/actor/CenterRotationParentBase.h>
+#include <RailPolyParent/actor/CenterSwingParentBase.h>
 
 namespace RailPolyParent {
     
-class CenterMovementParent : public CenterRotationParentBase {
+class CenterSwingMovementParent : public CenterSwingParentBase {
     public:
         static Profile* sProfile;
     
     public:
-        CenterMovementParent(const ActorCreateParam& param);
-        ~CenterMovementParent() override = default;
+        CenterSwingMovementParent(const ActorCreateParam& param);
+        ~CenterSwingMovementParent() override = default;
     
         Result create() override;
         bool execute() override;

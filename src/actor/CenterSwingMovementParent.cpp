@@ -1,22 +1,21 @@
-#include "RailPolyParent/actor/CenterRotationParentBase.h"
 #include "actor/ActorBase.h"
 #include <actor/Actor.h>
 #include <graphics/AnimModel.h>
 #include <RailPolyParent/RailPolyParent.h>
-#include <RailPolyParent/actor/CenterMovementParent.h>
+#include <RailPolyParent/actor/CenterSwingMovementParent.h>
 #include <red/util/SpriteUtil.h>
 #include <telkin/Print.h>
 
 namespace RailPolyParent {
 
-Profile* CenterMovementParent::sProfile = RailPolyParent::getRegistrar()->newProfile<CenterMovementParent>("centermp")
+Profile* CenterSwingMovementParent::sProfile = RailPolyParent::getRegistrar()->newProfile<CenterSwingMovementParent>("swaycentermp")
     .build();
 
-CenterMovementParent::CenterMovementParent(const ActorCreateParam& param)
-    : CenterRotationParentBase(param)
+CenterSwingMovementParent::CenterSwingMovementParent(const ActorCreateParam& param)
+    : CenterSwingParentBase(param)
 { }
 
-ActorBase::Result CenterMovementParent::create() {
+ActorBase::Result CenterSwingMovementParent::create() {
     // Setting: Movement Type
     const u8 movementType = mLayer;
     if (movementType > ParentMovementType::cPos_KinokoLift) {
@@ -52,17 +51,17 @@ ActorBase::Result CenterMovementParent::create() {
     // helps avoid crashes for some reason
     mMovementMgr.execute();
 
-    // tk::println("CenterMovementParent was created!");
+    // tk::println("CenterSwingMovementParent was created!");
 
-    if (!CenterRotationParentBase::create()) {
+    if (!CenterSwingParentBase::create()) {
         return cResult_Failed;
     }
 
     return cResult_Success;
 }
 
-bool CenterMovementParent::execute() {
-    if (!CenterRotationParentBase::execute()) {
+bool CenterSwingMovementParent::execute() {
+    if (!CenterSwingParentBase::execute()) {
         return false;
     }
 
@@ -73,7 +72,7 @@ bool CenterMovementParent::execute() {
     return true;
 }
 
-void CenterMovementParent::setMovementParams() {
+void CenterSwingMovementParent::setMovementParams() {
         static sead::SafeArray<f32, 16> twoWayDistanceMultiplierArr {
             1.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f
         };

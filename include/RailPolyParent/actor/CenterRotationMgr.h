@@ -316,9 +316,9 @@ public:
         _6c = setter;
     }
 
-    u8 set_6d(u8 index)
+    void set_6d(u8 setter, u8 index)
     {
-        return _6d[index];
+        _6d[index] = setter;
     }
 
     // StateID_RotateTo:                        0x10220C6C
