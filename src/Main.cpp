@@ -124,8 +124,8 @@ CenterRotationParentBase* scanCenterRotation(u32 movement_id) {
         // if we come across one of my custom movement controllers, accept it.
         if (targetactor->getProfile() == RailPolyParent::DaenParent::sProfile) {
             return targetactor;
+            
         }
-        
         // 0x28 is the spinning pivotal rotation controller profile id
         if (targetactor->getProfileID() == 0x28) {
             return targetactor;
@@ -135,11 +135,11 @@ CenterRotationParentBase* scanCenterRotation(u32 movement_id) {
 }
 tBranch(0x0287A2A4, scanCenterRotation, tk::BranchType::b); // scanCenterRotation(u32 movement_id)
 
-void RailPolyMgr::initializeState_Drop() {
-    tk::println("bruh i just got hacked lmao %u", _66[1]);
-    if (!(_66[1] & 0xF)) {
-        return;
-    }
-    mStateMgr.changeState(StateID_RailMove);
-}
-tBranch(0x029788E0, RailPolyMgr::initializeState_Drop, tk::BranchType::b); // RailPolyMgr::initializeState_Drop()
+// void RailPolyMgr::initializeState_Drop() {
+//     tk::println("bruh i just got hacked lmao %u", _66[1]);
+//     if (!(_66[1] & 0xF)) {
+//         return;
+//     }
+//     mStateMgr.changeState(StateID_RailMove);
+// }
+// tBranch(0x029788E0, RailPolyMgr::initializeState_Drop, tk::BranchType::b); // RailPolyMgr::initializeState_Drop()

@@ -35,6 +35,16 @@ public:
         return mStateMgr.getStateID() == state_id;
     }
 
+    void setState(StateID state_id)
+    {
+        mStateMgr.changeState(state_id);
+    }
+
+    FStateMgr<RailPolyMgr> getStateMgr() const
+    {
+        return mStateMgr;
+    }
+
     PathNode* getPathNodes() const
     {
         return mPathNodes;

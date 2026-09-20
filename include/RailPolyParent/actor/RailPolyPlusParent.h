@@ -6,6 +6,11 @@ namespace RailPolyParent {
     
 class RailPolyPlusParent : public RailPolyParentBase {
     public:
+        enum CustomEndBehavior {
+            cCustomEndBehavior_Vanilla = 0,
+            cCustomEndBehavior_StopLoopEvent,
+        };
+    public:
         static Profile* sProfile;
     
     public:
@@ -16,9 +21,13 @@ class RailPolyPlusParent : public RailPolyParentBase {
         bool execute() override;
 
         void initRail();
+        void stopLoopEventBehavior();
     
     private:
-        bool    mPreviousSwitchFlagState;
+        bool            mPreviousSwitchFlagState;
+        sead::Vector2f  mRailPreviousPos;
+        sead::Vector2f  mRailPreviousSpeed;
+        u16             mRailStoredNodeIdx1;
 };
 
 }

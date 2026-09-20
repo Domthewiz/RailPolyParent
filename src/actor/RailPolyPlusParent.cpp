@@ -43,13 +43,8 @@ ActorBase::Result RailPolyPlusParent::create() {
 
     initRail();
 
-    mRail.set_66((mParam0 >> 0x14) & 0xF, 1); // set our super-duper-pooper-scooper-secret behavior to override fall down
-
     if ((mParam0 & 8) != 0) {
         _1858[1] = mParam1 & 1;
-        // condensedEventIDs = SwitchFlagMgr::instance()->condenseEventIds( mSwitchFlag0, mSwitchFlag1);
-        // if ((SwitchFlagMgr::instance()->getSwitchFlag() & condensedEventIDs >> 0x20) == 0 &&
-        //     (SwitchFlagMgr::instance()->getSwitchFlag() & condensedEventIDs) == 0) {
         if ((SwitchFlagMgr::instance()->getSwitchFlag() & mSwitchFlag0) == 0) {
             changeState(StateID_ControllerActive);
             return cResult_Success;
@@ -60,7 +55,6 @@ ActorBase::Result RailPolyPlusParent::create() {
 }
 
 void RailPolyPlusParent::initRail() {
-    tk::println("fluh");
     sead::Vector2f startingPosition;
     
     startingPosition.x = mPos.x;
@@ -73,8 +67,6 @@ void RailPolyPlusParent::initRail() {
         this->_184c = 0x10000000 * (mParam1 >> 0x18 & 0xF);
     }
 
-    // RailPolyMgr::EndBehavior hackedEndBehavior = ((mParam0 >> 0x10 & 0x3) == 2) ? RailPolyMgr::cEndBehavior_GoToLoopStart : static_cast<RailPolyMgr::EndBehavior>(mParam0 >> 0x10 & 0x3);
-    // hackedEndBehavior = ((mParam1 >> 0x4 & 0xF)) ? hackedEndBehavior : RailPolyMgr::cEndBehavior_Drop;
     mRail.initialize(
         startingPosition, 
         mParam1 >> 0x8 & 0xFF, // Use different nybbles so we can use all 255 ids
@@ -88,24 +80,53 @@ void RailPolyPlusParent::initRail() {
 
 
 bool RailPolyPlusParent::execute() {
-    // If the original end behavior was Fall Down
-    tk::println("bruh bffr %u, %u, %u, %u", mRail.getCurrentNode()->unknown[0], mRail.getCurrentNode()->unknown[1], mRail.getCurrentNode()->unknown[2], mRail.getCurrentNode()->delay);
-    if ((mParam0 >> 0x10 & 0x3) == 2) {
-    }
+    
+    mRailPreviousPos = mRail.getPos();
+    mRailPreviousSpeed = mRail.getSpeed();
 
     if (!RailPolyParentBase::execute()) {
         return false;
     }
-
-    // RailPolyMgr::PathNode* realNode = mRail.getCurrentNode();
-    // if (SwitchFlagMgr::instance()->getSwitchFlag() & mSwitchFlag0) {
-    //     mRail.setCurrentNode(mRail.getPathNodes());
-    // } else {
-    //     mRail.setCurrentNode(realNode);
-    // }
-    // mPreviousSwitchFlagState = SwitchFlagMgr::instance()->getSwitchFlag() & mSwitchFlag0;
     
+    if (mRail.isState(&RailPolyMgr::StateID_Drop)) {
+        // Custom end behavior
+        switch (mParam0 >> 0x14 & 0xF) {
+            case cCustomEndBehavior_Vanilla:
+                break;
+            case cCustomEndBehavior_StopLoopEvent:
+                stopLoopEventBehavior();
+                break;
+            
+        }
+    }
+
     return true;
+}
+
+void RailPolyPlusParent::stopLoopEventBehavior() {
+    // To counteract the "drop"
+    mRail.setPos(mRailPreviousPos);
+    mRail.setSpeed(mRailPreviousSpeed);
+
+    // Do some trickery with the path node count, current node, and loop node. but it works :)
+    if (SwitchFlagMgr::instance()->isActivated(mSwitchFlag1 - 1)) {
+        mRail.setCurrentNodeIdx(0);
+        if (mRail.getNodeCount() != mRail.getLoopStartIdx()) {
+            mRailStoredNodeIdx1 = mRail.getNodeCount();
+            mRail.setCurrentNode(mRail.getPathNodes());
+            mRail.getStateMgr().changeState(RailPolyMgr::StateID_RailMove);
+        }
+        mRail.setNodeCount(mRail.getLoopStartIdx());
+        
+        return;
+    }
+    if (mRail.getNodeCount() == mRail.getLoopStartIdx()) {
+        mRail.setNodeCount(mRailStoredNodeIdx1);
+        mRail.setCurrentNodeIdx(mRail.getLoopStartIdx());
+        mRail.setCurrentNode(mRail.getPathNodes() + mRail.getLoopStartIdx());
+        mRail.getStateMgr().changeState(RailPolyMgr::StateID_RailMove);
+    }
+    return;
 }
 
 }

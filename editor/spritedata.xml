@@ -173,14 +173,16 @@
 		</initialstate>
 	</sprite>
 	<sprite string_id="railpolyp:railppp" name="Movement Controller - Path (Plus)" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
-		<value nybble="1-2" title="Stopping Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="5-6" title="Starting node" category="behavior" />
-		<list nybble="7" title="Custom Behavior Override*" comment="When using the &quot;Custom*&quot; end behavior, this option can override what actually happens" category="behavior">
+		<value nybble="17-18" title="Path ID" category="behavior" />
+		<checkbox nybble="8" title="Smooth movement" mask="4" comment="This nybble is separate from the &quot;Move strictly&quot; nybble and uses a different algorithm." category="behavior" />
+		<checkbox nybble="8" title="Move strictly" mask="8" comment="Used to determine how the path should be followed. Elaboration can be found in this sprite's notes." category="behavior" />
+		<list nybble="7" title="Custom Behavior Override*" comment="When using the &quot;Custom*&quot; end behavior, this option can override what actually happens. These names can be somewhat confusing so please read the associated nybbles that appear with each option for more info." category="behavior">
 			<entry value="0">Fall Down</entry>
 			<entry value="1">Go to loop starting node on event</entry>
-			<entry value="2">Pause at specified node. Loops at end</entry>
-			<entry value="3">Pause at any node when event active</entry>
+			<entry value="2">45°</entry>
+			<entry value="3">67.5°</entry>
 			<entry value="4">90°</entry>
 			<entry value="5">112.5°</entry>
 			<entry value="6">135°</entry>
@@ -194,9 +196,8 @@
 			<entry value="14">315°</entry>
 			<entry value="15">337.5°</entry>
 		</list>
-		<value nybble="17-18" title="Path ID" category="behavior" />
-		<checkbox nybble="8" title="Smooth movement" mask="4" comment="This nybble is separate from the &quot;Move strictly&quot; nybble and uses a different algorithm." category="behavior" />
-		<checkbox nybble="8" title="Move strictly" mask="8" comment="Used to determine how the path should be followed. Elaboration can be found in this sprite's notes." category="behavior" />
+		<value nybble="1-2" title="Stopping Event ID" comment="When this event is activated, this will loop over from the last node in the path to node zero, then it will continue on the path and stop at the node before &quot;Second Stopping Node&quot;. When stopped before the &quot;Second Stopping Node&quot; node, it will resume once the event deactivates." id_type="event" category="events" requirednybble="7.1" requiredval="1"/>
+		<value nybble="9-10" title="Second Stopping Node" comment="Read &quot;Stopping Event ID&quot;" category="behavior" requirednybble="7.1" requiredval="1"/>
 		<list bit="31-32" title="When the last node is reached" category="behavior">
             <entry value="0">Stop</entry>
             <entry value="1">Go to loop start</entry>
