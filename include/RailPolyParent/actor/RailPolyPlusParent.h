@@ -1,6 +1,7 @@
 
 #pragma once
 #include <RailPolyParent/actor/RailPolyParentBase.h>
+#include <../REDCORE2.0HEADERS/ParentMovementMgr.h>
 
 namespace RailPolyParent {
     
@@ -23,11 +24,15 @@ class RailPolyPlusParent : public RailPolyParentBase {
         void initRail();
         void stopLoopEventBehavior();
     
+        void setMovementParams();
+
     private:
-        bool            mPreviousSwitchFlagState;
-        sead::Vector2f  mRailPreviousPos;
-        sead::Vector2f  mRailPreviousSpeed;
-        u16             mRailStoredNodeIdx1;
+        bool                mPreviousSwitchFlagState;
+        sead::Vector2f      mRailPreviousPos;
+        sead::Vector2f      mRailPreviousSpeed;
+        u16                 mRailStoredNodeIdx1;
+        sead::Vector3f      mInitialPos;
+        ParentMovementMgr   mMovementMgr;
 };
 
 }

@@ -74,26 +74,26 @@ bool CenterMovementParent::execute() {
 }
 
 void CenterMovementParent::setMovementParams() {
-        static sead::SafeArray<f32, 16> twoWayDistanceMultiplierArr {
-            1.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f
-        };
-        static sead::SafeArray<f32, 16> boltMovementSpeedArr {
-            1.0f, 0.25f, 0.5f, 0.75f, 0.0f, 1.5f, 2.0f, 2.5f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f
-        };
+    static sead::SafeArray<f32, 16> twoWayDistanceMultiplierArr {
+        1.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f
+    };
+    static sead::SafeArray<f32, 16> boltMovementSpeedArr {
+        1.0f, 0.25f, 0.5f, 0.75f, 0.0f, 1.5f, 2.0f, 2.5f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f
+    };
 
-        ParentMovementType mvtp = static_cast<ParentMovementType>(mLayer);
-        if (mvtp == ParentMovementType::cPos_FloorGyration) {
-            mMovementMgr.setFloorGyrationAngle(0x1000000 * red::SpriteUtil::getNybbleRange(this, 23, 24));
-            ParentMovementMgr::MovementProperties newproperty = mMovementMgr.getMovementProperties();
-            newproperty.hill_distance_offset = -16.0f * red::SpriteUtil::getNybble19(this);
-            mMovementMgr.setMovementProperties(newproperty);
-        } else if (mvtp == ParentMovementType::cPos_GoAndCome) {
-            mMovementMgr.setTwoWayDistanceMultiplier(twoWayDistanceMultiplierArr[red::SpriteUtil::getNybble23(this)] + (0.01f * red::SpriteUtil::getNybble24(this)));
-        } else if (mvtp == ParentMovementType::cPos_Screw) {
-            mMovementMgr.setBoltSpeed(boltMovementSpeedArr[red::SpriteUtil::getNybble23(this)]);
-            mMovementMgr.setBoltDirection(static_cast<DirType>(red::SpriteUtil::getNybble24(this)));
-        } else if (mvtp == ParentMovementType::cPos_ShiftingPlatform) {
-            mMovementMgr.setRectPlatformInfo(static_cast<RectPlatformInfo>(red::SpriteUtil::getNybble24(this)));
-        }
+    ParentMovementType mvtp = static_cast<ParentMovementType>(mLayer);
+    if (mvtp == ParentMovementType::cPos_FloorGyration) {
+        mMovementMgr.setFloorGyrationAngle(0x1000000 * red::SpriteUtil::getNybbleRange(this, 23, 24));
+        ParentMovementMgr::MovementProperties newproperty = mMovementMgr.getMovementProperties();
+        newproperty.hill_distance_offset = -16.0f * red::SpriteUtil::getNybble19(this);
+        mMovementMgr.setMovementProperties(newproperty);
+    } else if (mvtp == ParentMovementType::cPos_GoAndCome) {
+        mMovementMgr.setTwoWayDistanceMultiplier(twoWayDistanceMultiplierArr[red::SpriteUtil::getNybble23(this)] + (0.01f * red::SpriteUtil::getNybble24(this)));
+    } else if (mvtp == ParentMovementType::cPos_Screw) {
+        mMovementMgr.setBoltSpeed(boltMovementSpeedArr[red::SpriteUtil::getNybble23(this)]);
+        mMovementMgr.setBoltDirection(static_cast<DirType>(red::SpriteUtil::getNybble24(this)));
+    } else if (mvtp == ParentMovementType::cPos_ShiftingPlatform) {
+        mMovementMgr.setRectPlatformInfo(static_cast<RectPlatformInfo>(red::SpriteUtil::getNybble24(this)));
     }
+}
 }
