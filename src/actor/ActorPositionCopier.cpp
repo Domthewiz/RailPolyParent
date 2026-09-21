@@ -2,6 +2,7 @@
 #include <RailPolyParent/actor/ActorPositionCopier.h>
 
 #include <actor/ActorMgr.h>
+#include <actor/MapActor.h>
 
 #include <red/util/SpriteUtil.h>
 #include <red/profile/ProfileEx.h>
@@ -117,16 +118,30 @@ namespace RailPolyParent {
         ActorMgr* actors = ActorMgr::instance();
 
         for (ActorMgr::iterator it = actors->getActorBegin(); it != actors->getActorEnd(); it++) {
-            Actor* actor = static_cast<Actor*>(*it);
+            Actor* targetActor = static_cast<Actor*>(*it);
             
-            if (actor == nullptr || actor->getProfile() == ActorPositionCopier::cProfile || shouldIgnoreActor(actor)) {
+            if (targetActor == nullptr || targetActor->getProfile() == ActorPositionCopier::cProfile || shouldIgnoreActor(targetActor)) {
                 continue;
             }
 
-            const u8 linkID = actor->getParamEx().course.init_state_flag;
+            const u8 targetActorInitialState = targetActor->getParamEx().course.init_state_flag;
+
+            // discriminate via sprite/profile id
+            switch ((mParam0 >> 0x8) & 0x3) {
+                case 1:
+                    if (targetActor->getProfileID() != MapActor::cProfileID[(mParam1 >> 0x14) & 0xFFF]) {
+                        continue;
+                    }
+                    break;
+                case 2:
+                    if (targetActor->getProfileID() != ((mParam1 >> 0x14) & 0xFFF)) {
+                        continue;
+                    }
+                    break;
+            }
             
-            if (linkID == getLinkID()) {
-                return actor;
+            if (targetActorInitialState == getLinkID()) {
+                return targetActor;
             }
         }
 
@@ -134,6 +149,7 @@ namespace RailPolyParent {
     }
 
     bool shouldIgnoreActor(const Actor* actor) {
+        
         if (actor->getProfileID() < ProfileInfo::cProfileID_Max) {
             return false;
         }

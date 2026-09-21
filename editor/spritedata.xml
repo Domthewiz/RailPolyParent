@@ -868,7 +868,14 @@
 		</initialstate>
 	</sprite> Doesn't work -->
 
-	<sprite string_id="railpolyp:actor_position_copier" name="Actor Position Copier">
+	<sprite string_id="railpolyp:actor_position_copier" name="Movement Controller - Actor Position Copier" notes="This sprite can target an actor with a specified initial state, and move it by changing its position via movement controller.">
+		<list nybble="10" title="Target Actor Info">
+            <entry value="0">Any Actor</entry>
+            <entry value="1">Sprite ID</entry>
+            <entry value="2">Profile ID</entry>
+        </list>
+		<value nybble="13-15" title="Target Sprite ID" requirednybble="10.2" requiredval="1"/>
+		<value nybble="13-15" title="Target Profile ID" requirednybble="10.2" requiredval="2"/>
 		<list nybble="5" title="Movement Type">
 			<entry value="0">None</entry>
 			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
@@ -882,11 +889,7 @@
 			<entry value="10">Rolling Hill (265)</entry>
 			<entry value="11">Moving Mushroom Lift (210)</entry>
 		</list>
-		<value nybble="21-22" title="Movement ID"/>
-		<value nybble="23-24" title="Link ID" comment="Looks for an actor with this value as its initial state."/>
-
-		<!-- additional settings -->
-		<list nybble="7" title="Bolt Movement Speed" category="movement" requirednybble="5" requiredval="6">
+		<list nybble="7" title="Bolt Movement Speed" category="movement" requirednybble="5" requiredval="2">
             <entry value="0">1.0</entry>
 			<entry value="4">0.0</entry>
 			<entry value="1">0.25</entry>
@@ -905,14 +908,12 @@
 			<entry value="14">9.0</entry>
 			<entry value="15">10.0</entry>
 		</list>
-
-		<list nybble="8" title="Bolt Direction" category="movement" requirednybble="5" requiredval="6">
+		<list nybble="8" title="Bolt Direction" category="movement" requirednybble="5" requiredval="2">
             <entry value="0">Right</entry>
             <entry value="1">Left</entry>
             <entry value="2">Up</entry>
             <entry value="3">Down</entry>
         </list>
-
 		<list nybble="7" title="Two Way Distance Multiplier" category="movement" requirednybble="5" requiredval="4">
             <entry value="0">1.0</entry>
             <entry value="1">0.1</entry>
@@ -933,10 +934,13 @@
         </list>
         <value nybble="8" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement" requirednybble="5" requiredval="4"/>
 		<value nybble="9" title="Hill Distance" category="movement" requirednybble="5" requiredval="10"/>
+		<value nybble="7-8" title="Hill Angle" category="movement" requirednybble="5" requiredval="10"/>
 		<list nybble="7" title="Rectangle Platform Info" category="movement" requirednybble="5" requiredval="8">
             <entry value="0">Follow Top platform</entry>
             <entry value="1">Follow Bottom platform</entry>
             <entry value="2">Doesn't move</entry>
         </list>
+		<value nybble="21-22" title="Movement ID"/>
+		<value nybble="23-24" title="Target Initial State" comment="Looks for an actor with this value as its initial state."/>
 	</sprite>
 </sprites>
