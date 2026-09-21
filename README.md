@@ -27,4 +27,4 @@
 > Make sure to also install the [editor patch](https://github.com/Domthewiz/RailPolyParent/tree/main/editor) so that you can place the actors in your levels!
 
 > [!NOTE]
-> This was compiled and published using locally-edited headers, so cloning this repository and trying to compile it yourself may not function properly. This will not be an issue once RedCore 2.0.0 releases.
+> This was compiled and published using local headers, so cloning this repository and trying to compile it yourself will work, but ParentMovementMgr and SwitchFlagMgr are seperate. This will not be an issue once RedCore 2.0.0 releases.
