@@ -36,6 +36,8 @@ namespace RailPolyParent {
     }
 
     bool ActorPositionCopier::execute() {
+        screenOutCheck(cScreenOutFlag_SkipNone);
+
         Actor* actor = resolveDependent();
 
         if (actor == nullptr) {
@@ -122,7 +124,7 @@ namespace RailPolyParent {
             }
 
             const u8 linkID = actor->getParamEx().course.init_state_flag;
-            actor->getProfile();
+            
             if (linkID == getLinkID()) {
                 return actor;
             }
