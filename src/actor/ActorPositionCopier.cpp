@@ -41,8 +41,10 @@ namespace RailPolyParent {
             }
             return false;
         } else {
-            mWasResolved = true;
-            mDependentID = actor->getActorUniqueID();
+            if (!mWasResolved) {
+                mWasResolved = true;
+                mDependentID = actor->getActorUniqueID();
+            }
         }
 
         mMovementMgr.execute();
