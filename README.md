@@ -6,13 +6,13 @@
 
 ## Features
 - **Actor Position Copier**: A utility sprite that allows you to use movement controllers on actors that otherwise wouldn't support them using the target's initial state.
-- **Movement Controller - Path (Plus)**: This path controller clone allows for use of all 255 path ids, aswell as adding brand-new custom end behaviors.
+- **Movement Controller - Path (Plus, Universally-controlled)**: This path controller clone allows for use of all 255 path ids, aswell as adding brand-new custom end behaviors. Also it can itself be movement controlled by anything
 - **Movement Controller - Pivotal Rotation (Spinning, Oscilating)**: This unique spinning pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
 - **Movement Controller - Pivotal Rotation (Swaying, Oscilating)**: This unique swaying pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
 - **Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)**: This utilitarian spinning pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
 - **Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)**: This utilitarian swaying pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
 - **Movement Controller - Dancing**: This is still WIP, but once it is finished it will function like the one from NSMBW.
-
+- **Movement Controller - Line Follower [USES PATH ID]**: This movement controller allows you use lines as path-type movement.
 ### For Modders
 - Download the **`bundle`** from the [latest release](https://github.com/Domthewiz/RailPolyParent/releases/latest) and extract it to your mod folder, merging the `content` and `code` folders into your project. The actors will now be available in-game.
     - The `rules.txt` doesn't matter as long as the `version = 8` in your own.
