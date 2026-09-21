@@ -3,6 +3,7 @@
 
 #include <actor/ActorMgr.h>
 #include <actor/MapActor.h>
+#include <enemy/Enemy.h>
 
 #include <red/util/SpriteUtil.h>
 #include <red/profile/ProfileEx.h>
@@ -59,6 +60,13 @@ namespace RailPolyParent {
 
         mMovementMgr.execute();
         actor->getPos() = mPos = mMovementMgr.getPosition();
+        
+        // additional actor-type specific checks
+
+        // let go of enemies
+        if (Enemy* enemy = sead::DynamicCast<Enemy>(actor); enemy != nullptr && enemy->isDead()) {
+            mDependentID = 0;
+        }
         
         return true;
     }
