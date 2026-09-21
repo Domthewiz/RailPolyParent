@@ -235,13 +235,13 @@ class SpriteImage_ControllerPath_Plus(SLib.SpriteImage_StaticMultiple):
         super().__init__(
             parent,
             3.75,
-            ImageCache['ControllerPath_Plus'],
+            ImageCache['ControllerPath_Plus_B'],
             (0, 0),
         )
 
     @staticmethod
     def loadImages():
-        SLib.loadIfNotInImageCache('ControllerPath_Plus', 'controller_path_plus.png')
+        SLib.loadIfNotInImageCache('ControllerPath_Plus_B', 'controller_path_plus.png')
 
 class SpriteImage_Controller_TwoWay_Universal(SLib.SpriteImage_StaticMultiple):  # 70, 642
     def __init__(self, parent):

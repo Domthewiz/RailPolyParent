@@ -341,6 +341,72 @@
 		<checkbox nybble="20" title="Reset when off-screen" comment="When the path controller is off-screen, it resets itself to its original position and waits for the triggering event id to be activated, regardless of the &quot;Event activated&quot; checkbox." category="behavior" />
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
 		<value nybble="24" title="Unknown Value 24" />
+		<list nybble="23" title="Bolt Movement Speed" category="movement" >
+            <entry value="0">1.0</entry>
+			<entry value="4">0.0</entry>
+			<entry value="1">0.25</entry>
+			<entry value="2">0.5</entry>
+			<entry value="3">0.75</entry>
+            <entry value="0">1.0</entry>
+			<entry value="5">1.5</entry>
+			<entry value="6">2.0</entry>
+			<entry value="7">2.5</entry>
+			<entry value="8">3.0</entry>
+			<entry value="9">4.0</entry>
+			<entry value="10">5.0</entry>
+			<entry value="11">6.0</entry>
+			<entry value="12">7.0</entry>
+			<entry value="13">8.0</entry>
+			<entry value="14">9.0</entry>
+			<entry value="15">10.0</entry>
+		</list>
+        <list nybble="24" title="Bolt Direction" category="movement">
+            <entry value="0">Right</entry>
+            <entry value="1">Left</entry>
+            <entry value="2">Up</entry>
+            <entry value="3">Down</entry>
+        </list>
+        <list nybble="24" title="Rectangle Platform Info" category="movement">
+            <entry value="0">Follow Top platform</entry>
+            <entry value="1">Follow Bottom platform</entry>
+            <entry value="2">Doesn't move</entry>
+        </list>
+		<value nybble="19" title="Hill Distance" category="movement"/>
+		<value nybble="23-24" title="Hill Angle" category="movement"/>
+		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
+            <entry value="0">1.0</entry>
+            <entry value="1">0.1</entry>
+            <entry value="2">0.2</entry>
+            <entry value="3">0.3</entry>
+            <entry value="4">0.4</entry>
+            <entry value="5">0.5</entry>
+            <entry value="6">0.6</entry>
+            <entry value="7">0.7</entry>
+            <entry value="8">0.8</entry>
+            <entry value="9">0.9</entry>
+            <entry value="10">1.0</entry>
+            <entry value="11">1.1</entry>
+            <entry value="12">1.2</entry>
+            <entry value="13">1.3</entry>
+            <entry value="14">1.4</entry>
+            <entry value="15">1.5</entry>
+        </list>
+        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+		<layer title="Movement Type" category="movement" type="list">
+			<entry value="0">None</entry>
+			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
+			<entry value="2">Bolt (238)</entry>
+			<entry value="3">Path (100)</entry>
+			<entry value="4">Two-Way (70)</entry>
+			<entry value="6">BoltMushroom (241)</entry>
+			<entry value="7">No-bolt Mushroom (242)</entry>
+			<entry value="8">Shifting Platform (132)</entry>
+			<entry value="9">Spinning (214, 484)</entry>
+			<entry value="10">Rolling Hill (265)</entry>
+			<entry value="11">Moving Mushroom Lift (210)</entry>
+		</layer>
+		<initialstate title="Controller Movement ID" category="movement" type="value">
+		</initialstate>
 	</sprite>
 	<sprite string_id="railpolyp:centermp" name="Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
 		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
