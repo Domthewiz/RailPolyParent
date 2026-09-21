@@ -2,6 +2,7 @@
 
 // ParentMovementMgr
     _ZN17ParentMovementMgr12linkPivotal2ENS_23PivotalRotationSettingsE = 0x0284B7C8;
+    _ZN17ParentMovementMgr11linkPivotalERKN4sead7Vector3IfEEjaS4_bbbb = 0x0284B824;
 
 // RailPolyMgr
     _ZN11RailPolyMgr10initializeERN4sead7Vector2IfEEjbhjtf = 0x02977ED0;
