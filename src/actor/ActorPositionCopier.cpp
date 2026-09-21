@@ -8,6 +8,8 @@
 #include <red/profile/ProfileEx.h>
 
 namespace RailPolyParent {
+    SEAD_RTTI_OVERRIDE_IMPL(ActorPositionCopier, Actor);
+    
     Profile* ActorPositionCopier::cProfile = RailPolyParent::getRegistrar()->newProfile<ActorPositionCopier>("actor_position_copier")
         .build();
     
@@ -48,11 +50,11 @@ namespace RailPolyParent {
                 mDependentID = 0;
             }
             return false;
-        } else {
-            if (!mWasResolved) {
-                mWasResolved = true;
-                mDependentID = actor->getActorUniqueID();
-            }
+        }
+
+        if (!mWasResolved) {
+            mWasResolved = true;
+            mDependentID = actor->getActorUniqueID();
         }
 
         mMovementMgr.execute();

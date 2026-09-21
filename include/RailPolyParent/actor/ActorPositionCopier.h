@@ -5,6 +5,7 @@
 
 namespace RailPolyParent {
     class ActorPositionCopier : public Actor {
+        SEAD_RTTI_OVERRIDE(ActorPositionCopier, Actor);
     public:
         static Profile* cProfile;
 
@@ -25,10 +26,11 @@ namespace RailPolyParent {
         u8 getLinkID() const {
             return getParamEx().course.link_id;
         }
+
     private:
-        ParentMovementType mMovementType;
-        ParentMovementMgr mMovementMgr;
-        ActorUniqueID mDependentID;
-        bool mWasResolved;
+        ParentMovementType  mMovementType;
+        ParentMovementMgr   mMovementMgr;
+        ActorUniqueID       mDependentID;
+        bool                mWasResolved;
     };
 }
