@@ -12,7 +12,7 @@
 - **Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)**: This utilitarian spinning pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
 - **Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)**: This utilitarian swaying pivotal-rotation controller has the ability to itself be controlled by every movement controller (including other pivotal-rotation and other custom ones).
 - **Movement Controller - Dancing [USES PATH ID]**: /!\ This is still WIP, but once it is finished it will function like the one from NSMBW.
-- **Movement Controller - Line Follower [USES PATH ID]**: This movement controller allows you use lines as path-type movement.
+- **Movement Controller - Line Follower [USES PATH ID]**: This movement controller follows track rails, hook this up to any path-controllable sprite.
 ### For Modders
 - Download the **`bundle`** from the [latest release](https://github.com/Domthewiz/RailPolyParent/releases/latest) and extract it to your mod folder, merging the `content` and `code` folders into your project. The actors will now be available in-game.
     - The `rules.txt` doesn't matter as long as the `version = 8` in your own.
