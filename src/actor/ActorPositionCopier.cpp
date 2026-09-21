@@ -82,7 +82,7 @@ namespace RailPolyParent {
             }
 
             case cPos_GoAndCome: {
-                mMovementMgr.setTwoWayDistanceMultiplier(twoWayDistanceMultiplierArr[settingUpper] + (0.01f * settingLower));
+                mMovementMgr.setTwoWayDistanceMultiplier(twoWayDistanceMultiplierArr[red::SpriteUtil::getNybble23(this)] + (0.01f * settingLower));
                 break;
             }
 
@@ -132,7 +132,7 @@ namespace RailPolyParent {
     }
 
     bool shouldIgnoreActor(const Actor* actor) {
-        if (actor == nullptr) {
+        if (actor->getProfileID() < ProfileInfo::cProfileID_Max) {
             return false;
         }
 
