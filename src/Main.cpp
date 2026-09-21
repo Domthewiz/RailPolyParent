@@ -17,6 +17,8 @@
 #include <RailPolyParent/actor/DaenParent.h>
 #include <RailPolyParent/actor/OdoriParent.h>
 #include <RailPolyParent/actor/RailPolyPlusParent.h>
+#include <RailPolyParent/actor/PairObjParentBase.h>
+#include <RailPolyParent/actor/PairObjMovementParent.h>
 
 red::Registrar* RailPolyParent::getRegistrar() {
     static red::Registrar sRegistrar("railpolyp");
@@ -173,3 +175,35 @@ CenterSwingParentBase* scanCenterSwing(u32 movement_id) {
     return nullptr;
 }
 tBranch(0x0287A1E8, scanCenterSwing, tk::BranchType::b); // scanCenterSwing(u32 movement_id)
+
+PairObjParentBase* ParentMovementMgr_fetchTwoWay(ParentMovementMgr* _this) {
+    u8 movementId = _this->getMovementID();
+
+    ActorMgr* actorMgr = ActorMgr::instance();
+    for (auto it = actorMgr->getActorBegin(); it != actorMgr->getActorEnd(); it++) {
+        if (*it == nullptr) {
+            continue;
+        }
+
+        PairObjParentBase* targetactor = sead::DynamicCast<PairObjParentBase>(*it);
+        if (!targetactor) {
+            continue;
+        }
+        
+        if (targetactor->getParamEx().course.movement_id != movementId) {
+            continue;
+        }
+        
+        // if we come across one of my custom movement controllers, accept it.
+        if (targetactor->getProfile() == RailPolyParent::PairObjMovementParent::sProfile) {
+            return targetactor;
+        }
+        
+        // 0xb is the two way controller profile id
+        if (targetactor->getProfileID() == 0xb) {
+            return targetactor;
+        }
+    }
+    return nullptr;
+}
+tBranch(0x02849F10, ParentMovementMgr_fetchTwoWay, tk::BranchType::b); // ParentMovementMgr::ParentMovementMgr_fetchTwoWay(ParentMovementMgr*)

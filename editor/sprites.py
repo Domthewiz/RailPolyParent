@@ -272,6 +272,19 @@ class SpriteImage_ControllerPath_LineFollower(SLib.SpriteImage_StaticMultiple): 
     def loadImages():
         SLib.loadIfNotInImageCache('Controller_Linefollower', 'controller_linefollower.png')
 
+class SpriteImage_ActorPositionCopier(SLib.SpriteImage_StaticMultiple):  # 100
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            3.75,
+            ImageCache['ActorPositionCopier'],
+            (-8, -8),
+        )
+
+    @staticmethod
+    def loadImages():
+        SLib.loadIfNotInImageCache('ActorPositionCopier', 'actor_position_copier.png')
+
 ImageClasses = {
     "railpolyp:odori_parent": SpriteImage_ControllerDancing,
     "railpolyp:sway_daen_parent": SpriteImage_ControllerSwaying_Shifting,
@@ -280,5 +293,6 @@ ImageClasses = {
     "railpolyp:center_mp": SpriteImage_ControllerSpinning_Universal,
     "railpolyp:pair_obj_mp": SpriteImage_Controller_TwoWay_Universal,
     "railpolyp:line_fp": SpriteImage_ControllerPath_LineFollower,
-    "railpolyp:rail_ppp": SpriteImage_ControllerPath_Plus
+    "railpolyp:rail_ppp": SpriteImage_ControllerPath_Plus,
+    "railpolyp:actor_position_copier": SpriteImage_ActorPositionCopier
 }

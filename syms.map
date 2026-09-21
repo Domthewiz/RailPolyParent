@@ -45,6 +45,12 @@
     _ZN17PairObjParentBase7executeEv = 0x02847E40;
     _ZN17PairObjParentBase9sTypeInfoE = 0x101EB624;
 
+// PairObjMgr
+    _ZN10PairObjMgr16StateID_Unknown1E = 0x10226D00;
+    _ZN10PairObjMgr16StateID_Unknown2E = 0x10226D20;
+    _ZN10PairObjMgr16StateID_Unknown3E = 0x10226D40;
+    _ZN10PairObjMgr14StateID_StaticE = 0x10226D60;
+
 // LineMgr
     _ZN7LineMgrC1Ev = 0x0200DC14;
     _ZN7LineMgr4initERKN4sead7Vector2IfEEhfNS_4TypeEh = 0x0200DF60;

@@ -665,7 +665,7 @@
             <entry value="14">1.4</entry>
             <entry value="15">1.5</entry>
         </list>
-        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
+        <value nybble="24" title="Two Way Distance Multiplier (added)" comment="Value / 100" category="movement"/>
 		<layer title="Movement Type" category="movement" type="list">
 			<entry value="0">None</entry>
 			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
@@ -684,7 +684,7 @@
 	</sprite>
 	<sprite string_id="railpolyp:line_fp" name="Movement Controller - Line Follower [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite.">
 		<dualbox nybble="12" title1="Goes Left" title2="Goes Right"/>
-		<dualbox nybble="12" title1="Reverse at end" title2="Stop at end"/>
+		<dualbox nybble="9" title1="Reverse at end" title2="Stop at end"/>
         <list nybble="11" title="Speed">
 			<entry value="0">1.0</entry>
 			<entry value="1">0.5</entry>
@@ -776,7 +776,8 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite> Doesn't work -->
-	<!-- <sprite string_id="railpolyp:pairobjmp" name="Movement Controller - Two-Way (Universally-controlled)">
+	<sprite string_id="railpolyp:pairobjmp" name="Movement Controller - Two-Way (Universally-controlled)">
+		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events"/>
 		<checkbox nybble="6" title="Slower Acceleration" category="behavior" />
 		<list bit="30-32" title="Direction" comment="Sets the initial direction." category="behavior">
 			<entry value="0">Right</entry>
@@ -797,76 +798,11 @@
 			<entry value="2">1.0</entry>
 			<entry value="3">2.0</entry>
 		</list>
-		<value nybble="18" title="Useless" comment="Used by Nintendo, but ignored by the game" />
+		<value nybble="18" title="Usele.
+		+ss" comment="Used by Nintendo, but ignored by the game" />
 		<value nybble="20" title="Useless 2" comment="Used by Nintendo, but ignored by the game" />
-		<value nybble="21-22" title="Sprite Movement ID" id_type="movement" category="movement" />
-		<list nybble="23" title="Bolt Movement Speed" category="movement" >
-            <entry value="0">1.0</entry>
-			<entry value="4">0.0</entry>
-			<entry value="1">0.25</entry>
-			<entry value="2">0.5</entry>
-			<entry value="3">0.75</entry>
-            <entry value="0">1.0</entry>
-			<entry value="5">1.5</entry>
-			<entry value="6">2.0</entry>
-			<entry value="7">2.5</entry>
-			<entry value="8">3.0</entry>
-			<entry value="9">4.0</entry>
-			<entry value="10">5.0</entry>
-			<entry value="11">6.0</entry>
-			<entry value="12">7.0</entry>
-			<entry value="13">8.0</entry>
-			<entry value="14">9.0</entry>
-			<entry value="15">10.0</entry>
-		</list>
-        <list nybble="24" title="Bolt Direction" category="movement">
-            <entry value="0">Right</entry>
-            <entry value="1">Left</entry>
-            <entry value="2">Up</entry>
-            <entry value="3">Down</entry>
-        </list>
-        <list nybble="24" title="Rectangle Platform Info" category="movement">
-            <entry value="0">Follow Top platform</entry>
-            <entry value="1">Follow Bottom platform</entry>
-            <entry value="2">Doesn't move</entry>
-        </list>
-		<value nybble="19" title="Hill Distance" category="movement"/>
-		<value nybble="23-24" title="Hill Angle" category="movement"/>
-		<list nybble="23" title="Two Way Distance Multiplier" category="movement">
-            <entry value="0">1.0</entry>
-            <entry value="1">0.1</entry>
-            <entry value="2">0.2</entry>
-            <entry value="3">0.3</entry>
-            <entry value="4">0.4</entry>
-            <entry value="5">0.5</entry>
-            <entry value="6">0.6</entry>
-            <entry value="7">0.7</entry>
-            <entry value="8">0.8</entry>
-            <entry value="9">0.9</entry>
-            <entry value="10">1.0</entry>
-            <entry value="11">1.1</entry>
-            <entry value="12">1.2</entry>
-            <entry value="13">1.3</entry>
-            <entry value="14">1.4</entry>
-            <entry value="15">1.5</entry>
-        </list>
-        <value nybble="24" title="Two Way Distance Multiplier (added) " comment="Value / 100" category="movement"/>
-		<layer title="Movement Type" category="movement" type="list">
-			<entry value="0">None</entry>
-			<entry value="1">Sway Or Spin (68, 69, 116, 118)</entry>
-			<entry value="2">Bolt (238)</entry>
-			<entry value="3">Path (100)</entry>
-			<entry value="4">Two-Way (70)</entry>
-			<entry value="6">BoltMushroom (241)</entry>
-			<entry value="7">No-bolt Mushroom (242)</entry>
-			<entry value="8">Shifting Platform (132)</entry>
-			<entry value="9">Spinning (214, 484)</entry>
-			<entry value="10">Rolling Hill (265)</entry>
-			<entry value="11">Moving Mushroom Lift (210)</entry>
-		</layer>
-		<initialstate title="Controller Movement ID" category="movement" type="value">
-		</initialstate>
-	</sprite> Doesn't work -->
+		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
+	</sprite>
 
 	<sprite string_id="railpolyp:actor_position_copier" name="Movement Controller - Actor Position Copier" notes="This sprite can target an actor with a specified initial state, and move it by changing its position via movement controller.">
 		<list nybble="10" title="Target Actor Info">
