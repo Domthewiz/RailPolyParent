@@ -3,7 +3,7 @@
     
     Name: "RailPolyParent",
     Type: "Standard",
-    Version: "1.1.1",
+    Version: "1.1.2",
     Description: "Custom Movement Controllers for NSMBU",
     
     SourceDirs: [

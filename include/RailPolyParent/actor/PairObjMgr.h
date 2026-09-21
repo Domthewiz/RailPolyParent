@@ -61,9 +61,9 @@ public:
         return mDisplacement;
     }
     
-    u32 getVelocity() const
+    u32 get_48() const
     {
-        return mVelocity;
+        return _48;
     }
     
     u32 get_4c() const
@@ -151,9 +151,9 @@ public:
         mDisplacement = setter;
     }
     
-    void setVelocity(u32 setter)
+    void set_48(u32 setter)
     {
-        mVelocity = setter;
+        _48 = setter;
     }
     
     void set_4c(u32 setter)
@@ -231,7 +231,7 @@ protected:
     f32                     _3c;
     u32                     _40;
     f32                     mDisplacement;
-    u32                     mVelocity;
+    u32                     _48;
     u32                     _4c;
     u32                     _50;
     u32                     _54;

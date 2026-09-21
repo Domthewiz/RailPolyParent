@@ -19,7 +19,14 @@ public:
 
 protected:
     PairObjMgr  mTwoWay2;
-    u8          _1828[32];
+    f32         _1828;
+    f32         _182c;
+    f32         _1830;
+    f32         _1834;
+    f32         _1838;
+    f32         _183c;
+    f32         _1840;
+    f32         _1844;
     PairObjMgr  mTwoWay;
     f32         _18a8;
     f32         _18ac;

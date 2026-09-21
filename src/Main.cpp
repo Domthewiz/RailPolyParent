@@ -176,34 +176,34 @@ CenterSwingParentBase* scanCenterSwing(u32 movement_id) {
 }
 tBranch(0x0287A1E8, scanCenterSwing, tk::BranchType::b); // scanCenterSwing(u32 movement_id)
 
-PairObjParentBase* ParentMovementMgr_fetchTwoWay(ParentMovementMgr* _this) {
-    u8 movementId = _this->getMovementID();
+// PairObjParentBase* ParentMovementMgr_fetchTwoWay(ParentMovementMgr* _this) {
+//     u8 movementId = _this->getMovementID();
 
-    ActorMgr* actorMgr = ActorMgr::instance();
-    for (auto it = actorMgr->getActorBegin(); it != actorMgr->getActorEnd(); it++) {
-        if (*it == nullptr) {
-            continue;
-        }
+//     ActorMgr* actorMgr = ActorMgr::instance();
+//     for (auto it = actorMgr->getActorBegin(); it != actorMgr->getActorEnd(); it++) {
+//         if (*it == nullptr) {
+//             continue;
+//         }
 
-        PairObjParentBase* targetactor = sead::DynamicCast<PairObjParentBase>(*it);
-        if (!targetactor) {
-            continue;
-        }
+//         PairObjParentBase* targetactor = sead::DynamicCast<PairObjParentBase>(*it);
+//         if (!targetactor) {
+//             continue;
+//         }
         
-        if (targetactor->getParamEx().course.movement_id != movementId) {
-            continue;
-        }
+//         if (targetactor->getParamEx().course.movement_id != movementId) {
+//             continue;
+//         }
         
-        // if we come across one of my custom movement controllers, accept it.
-        if (targetactor->getProfile() == RailPolyParent::PairObjMovementParent::sProfile) {
-            return targetactor;
-        }
+//         // if we come across one of my custom movement controllers, accept it.
+//         if (targetactor->getProfile() == RailPolyParent::PairObjMovementParent::sProfile) {
+//             return targetactor;
+//         }
         
-        // 0xb is the two way controller profile id
-        if (targetactor->getProfileID() == 0xb) {
-            return targetactor;
-        }
-    }
-    return nullptr;
-}
-tBranch(0x02849F10, ParentMovementMgr_fetchTwoWay, tk::BranchType::b); // ParentMovementMgr::ParentMovementMgr_fetchTwoWay(ParentMovementMgr*)
+//         // 0xb is the two way controller profile id
+//         if (targetactor->getProfileID() == 0xb) {
+//             return targetactor;
+//         }
+//     }
+//     return nullptr;
+// }
+// tBranch(0x02849F10, ParentMovementMgr_fetchTwoWay, tk::BranchType::b); // ParentMovementMgr::ParentMovementMgr_fetchTwoWay(ParentMovementMgr*)

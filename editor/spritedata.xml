@@ -776,7 +776,7 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite> Doesn't work -->
-	<sprite string_id="railpolyp:pairobjmp" name="Movement Controller - Two-Way (Universally-controlled)">
+	<!-- <sprite string_id="railpolyp:pairobjmp" name="Movement Controller - Two-Way (Universally-controlled)">
 		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events"/>
 		<checkbox nybble="6" title="Slower Acceleration" category="behavior" />
 		<list bit="30-32" title="Direction" comment="Sets the initial direction." category="behavior">
@@ -802,7 +802,7 @@
 		+ss" comment="Used by Nintendo, but ignored by the game" />
 		<value nybble="20" title="Useless 2" comment="Used by Nintendo, but ignored by the game" />
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
-	</sprite>
+	</sprite> -->
 
 	<sprite string_id="railpolyp:actor_position_copier" name="Movement Controller - Actor Position Copier" notes="This sprite can target an actor with a specified initial state, and move it by changing its position via movement controller.">
 		<list nybble="10" title="Target Actor Info">

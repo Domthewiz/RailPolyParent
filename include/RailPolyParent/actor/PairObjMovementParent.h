@@ -25,6 +25,9 @@ class PairObjMovementParent : public PairObjParentBase {
     
     private:
         f32             mTwoWayLastMovementSign;
+        u32             mReal_54;
+        u32             mReal_58;
+        bool            mPrevSwitchFlag;
         TypeOfMovement  mTwoWayTypeOfMovement;
         bool            mNotMoving;
 };
