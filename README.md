@@ -5,6 +5,7 @@
 **RailPolyParent** is a **New Super Mario Bros. U** actor pack that adds custom movement controllers.
 
 ## Features
+- **Actor Position Copier**: A utility sprite that allows you to use movement controllers on actors that otherwise wouldn't support them using the target's initial state.
 - **Movement Controller - Path (Plus)**: This path controller clone allows for use of all 255 path ids, aswell as adding brand-new custom end behaviors.
 - **Movement Controller - Pivotal Rotation (Spinning, Oscilating)**: This unique spinning pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
 - **Movement Controller - Pivotal Rotation (Swaying, Oscilating)**: This unique swaying pivotal-rotation controller moves left, right, up, or down depending on the angle at which it is tilted.
