@@ -15,8 +15,9 @@ namespace RailPolyParent {
         Result create() override;
         bool execute() override;
 
+        void setMovementParameters();
         Actor* resolveDependent() const;
-        
+
         u8 getMovementID() const {
             return getParamEx().course.movement_id;
         }
