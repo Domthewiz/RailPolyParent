@@ -6,7 +6,7 @@
 
 namespace RailPolyParent {
 
-Profile* OdoriParent::sProfile = RailPolyParent::getRegistrar()->newProfile<OdoriParent>("odoriparent")
+Profile* OdoriParent::sProfile = RailPolyParent::getRegistrar()->newProfile<OdoriParent>("odori_parent")
     .build();
 
 OdoriParent::OdoriParent(const ActorCreateParam& param)

@@ -9,7 +9,7 @@
 
 namespace RailPolyParent {
 
-Profile* CenterMovementParent::sProfile = RailPolyParent::getRegistrar()->newProfile<CenterMovementParent>("centermp")
+Profile* CenterMovementParent::sProfile = RailPolyParent::getRegistrar()->newProfile<CenterMovementParent>("center_mp")
     .build();
 
 CenterMovementParent::CenterMovementParent(const ActorCreateParam& param)

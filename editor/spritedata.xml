@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sprites>
-	<sprite string_id="railpolyp:odoriparent" name="Movement Controller - Dancing [UNFINISHED] [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
+	<sprite string_id="railpolyp:odori_parent" name="Movement Controller - Dancing [UNFINISHED] [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="5-6" title="Starting node" category="behavior" />
 		<value nybble="7" title="Path ID" id_type="path" category="movement" />
@@ -42,7 +42,7 @@
 		<value nybble="21-22" title="Movement ID" id_type="movement" category="movement" />
 		<value nybble="24" title="Unknown Value 24" />
 	</sprite>
-	<sprite string_id="railpolyp:daenparent" name="Movement Controller - Pivotal Rotation (Spinning, Oscilating)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
+	<sprite string_id="railpolyp:daen_parent" name="Movement Controller - Pivotal Rotation (Spinning, Oscilating)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
 		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
 		<list nybble="5" title="Starting Rotation" comment="The angle it starts rotating at in degrees. Used to desync other sprites." category="behavior">
 			<entry value="0">0°</entry>
@@ -172,7 +172,7 @@
 			<entry value="7">+7</entry>
 		</initialstate>
 	</sprite>
-	<sprite string_id="railpolyp:swaydaenparent" name="Movement Controller - Pivotal Rotation (Swaying, Oscilating)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
+	<sprite string_id="railpolyp:sway_daen_parent" name="Movement Controller - Pivotal Rotation (Swaying, Oscilating)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. The X and Y offsets directly correlate with the angle at which the controller is at. This angle is calculated with a specified phase shift &quot;Shifting position offset&quot;.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events" requirednybble="9.2" requiredval="4-7"/>
 		<checkbox nybble="5" title="Unknown Value 5" comment="No effect at all." />
 		<list nybble="6" title="Sway Start Offset" comment="Offset [Sway Direction]. Sway direction is inverted when 'Reversed Movement' is used." category="behavior">
@@ -294,7 +294,7 @@
 			<entry value="7">+7</entry>
 		</initialstate>
 	</sprite>
-	<sprite string_id="railpolyp:railppp" name="Movement Controller - Path (Plus)" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
+	<sprite string_id="railpolyp:rail_ppp" name="Movement Controller - Path (Plus)" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite. This also works with the two path-pivotal-rotation controllers aswell.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Movement gets activated when this Event ID is set." id_type="event" category="events" requirednybble="12.1" requiredval="8-15"/>
 		<value nybble="5-6" title="Starting node" category="behavior" />
 		<value nybble="17-18" title="Path ID" category="behavior" />
@@ -408,7 +408,7 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite>
-	<sprite string_id="railpolyp:centermp" name="Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
+	<sprite string_id="railpolyp:center_mp" name="Movement Controller - Pivotal Rotation (Spinning, Universally-controlled)" notes="This sprite inherits CenterRotationParent (Spinning pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
 		<value nybble="3-4" title="Triggering Event ID" comment="The ID that triggers the controller." id_type="event" category="events"/>
 		<list nybble="5" title="Starting Rotation" comment="The angle it starts rotating at in degrees. Used to desync other sprites." category="behavior">
 			<entry value="0">0°</entry>
@@ -549,7 +549,7 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite>
-	<sprite string_id="railpolyp:swaycentermp" name="Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
+	<sprite string_id="railpolyp:sway_center_mp" name="Movement Controller - Pivotal Rotation (Swaying, Universally-controlled)" notes="This sprite inherits CenterSwingParent (Swaying pivotal-rotation controller), so to use this you just need to use a pivotal-rotation-controllable sprite. Can be moved by any other movement type.">
 		<value nybble="3-4" title="Triggering Event ID" comment="Use this to activate the movement once." id_type="event" category="events" requirednybble="9.2" requiredval="4-7"/>
 		<checkbox nybble="5" title="Unknown Value 5" comment="No effect at all." />
 		<list nybble="6" title="Sway Start Offset" comment="Offset [Sway Direction]. Sway direction is inverted when 'Reversed Movement' is used." category="behavior">
@@ -682,7 +682,7 @@
 		<initialstate title="Controller Movement ID" category="movement" type="value">
 		</initialstate>
 	</sprite>
-	<sprite string_id="railpolyp:linefp" name="Movement Controller - Line Follower [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite.">
+	<sprite string_id="railpolyp:line_fp" name="Movement Controller - Line Follower [USES PATH ID]" notes="This sprite inherits RailPolyParent (Path controller), so to use this you just need to use a path-controllable sprite.">
 		<dualbox nybble="12" title1="Goes Left" title2="Goes Right"/>
 		<dualbox nybble="12" title1="Reverse at end" title2="Stop at end"/>
         <list nybble="11" title="Speed">

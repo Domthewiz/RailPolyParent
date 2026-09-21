@@ -8,7 +8,7 @@
 
 namespace RailPolyParent {
 
-Profile* DaenSwingParent::sProfile = RailPolyParent::getRegistrar()->newProfile<DaenSwingParent>("swaydaenparent")
+Profile* DaenSwingParent::sProfile = RailPolyParent::getRegistrar()->newProfile<DaenSwingParent>("sway_daen_parent")
     .build();
 
 DaenSwingParent::DaenSwingParent(const ActorCreateParam& param)

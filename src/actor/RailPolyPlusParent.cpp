@@ -11,7 +11,7 @@
 
 namespace RailPolyParent {
 
-Profile* RailPolyPlusParent::sProfile = RailPolyParent::getRegistrar()->newProfile<RailPolyPlusParent>("railppp")
+Profile* RailPolyPlusParent::sProfile = RailPolyParent::getRegistrar()->newProfile<RailPolyPlusParent>("rail_ppp")
     .build();
 
 RailPolyPlusParent::RailPolyPlusParent(const ActorCreateParam& param)

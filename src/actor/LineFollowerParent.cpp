@@ -7,7 +7,7 @@
 
 namespace RailPolyParent {
 
-Profile* LineFollowerParent::sProfile = RailPolyParent::getRegistrar()->newProfile<LineFollowerParent>("linefp")
+Profile* LineFollowerParent::sProfile = RailPolyParent::getRegistrar()->newProfile<LineFollowerParent>("line_fp")
     .build();
 
 LineFollowerParent::LineFollowerParent(const ActorCreateParam& param)

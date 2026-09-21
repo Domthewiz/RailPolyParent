@@ -273,12 +273,12 @@ class SpriteImage_ControllerPath_LineFollower(SLib.SpriteImage_StaticMultiple): 
         SLib.loadIfNotInImageCache('Controller_Linefollower', 'controller_linefollower.png')
 
 ImageClasses = {
-    "railpolyp:odoriparent": SpriteImage_ControllerDancing,
-    "railpolyp:swaydaenparent": SpriteImage_ControllerSwaying_Shifting,
-    "railpolyp:daenparent": SpriteImage_ControllerSpinning_Shifting,
-    "railpolyp:swaycentermp": SpriteImage_ControllerSwaying_Universal,
-    "railpolyp:centermp": SpriteImage_ControllerSpinning_Universal,
-    "railpolyp:pairobjmp": SpriteImage_Controller_TwoWay_Universal,
-    "railpolyp:linefp": SpriteImage_ControllerPath_LineFollower,
-    "railpolyp:railppp": SpriteImage_ControllerPath_Plus
+    "railpolyp:odori_parent": SpriteImage_ControllerDancing,
+    "railpolyp:sway_daen_parent": SpriteImage_ControllerSwaying_Shifting,
+    "railpolyp:daen_parent": SpriteImage_ControllerSpinning_Shifting,
+    "railpolyp:sway_center_mp": SpriteImage_ControllerSwaying_Universal,
+    "railpolyp:center_mp": SpriteImage_ControllerSpinning_Universal,
+    "railpolyp:pair_obj_mp": SpriteImage_Controller_TwoWay_Universal,
+    "railpolyp:line_fp": SpriteImage_ControllerPath_LineFollower,
+    "railpolyp:rail_ppp": SpriteImage_ControllerPath_Plus
 }
